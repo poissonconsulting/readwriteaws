@@ -1,0 +1,22 @@
+Package: readwriteaws
+Title: Connection between s3 bucket structure and local file directories
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Ayla",
+           family = "Pearson",
+           role = c("aut", "cre"),
+           email = "ayla@pissonconsulting.ca",
+           comment = c(ORCID = "0000-0001-7388-1222"))
+Description: This pacakge should allow the user to easily download the required data from the AWS project bucket. It will also simplify bulk uploads to AWS. 
+URL: https://github.com/poissonconsulting/readwriteaws
+BugReports: https://github.com/poissonconsulting/readwriteaws/issues
+License: file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports:
+  chk,
+  paws
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
