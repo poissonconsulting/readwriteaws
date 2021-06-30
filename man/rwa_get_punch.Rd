@@ -2,13 +2,48 @@
 % Please edit documentation in R/rwa-get-punch.R
 \name{rwa_get_punch}
 \alias{rwa_get_punch}
-\title{List Files in S3 Bucket}
+\title{List Punch Data Files from s3 Bucket}
 \usage{
-rwa_get_punch(year = NULL, extension = NULL)
+rwa_get_punch(
+  bucket_name,
+  year = NULL,
+  date = NULL,
+  file_extension = NULL,
+  file_name = NULL
+)
 }
 \arguments{
-\item{year}{For narrowing scope of search if used in read-files it will need to build itself up}
+\item{bucket_name}{A string of the name of the AWS s3 bucket you are trying to access}
+
+\item{year}{Regex filter param}
+
+\item{date}{Regex filter param format YYYY-MM-DD}
+
+\item{file_extension}{Regex filter param (think this is better then file_type)}
+
+\item{file_name}{Regex filter param}
+}
+\value{
+Vector of object names that match the filter criteria
 }
 \description{
-Lists all files from s3 bucket
+Lists only punch data files
+}
+\examples{
+\dontrun{
+# Getting all the objects related to punch data
+rwa_get_punch(bucket_name = "my_bucket")
+
+# Get only punch data from 2021
+rwa_get_punch(bucket_name = "my_bucket", year = "2021")
+
+# Get only the csv files
+rwa_get_punch(bucket_name = "my_bucket", extension = "csv")
+
+# Get only data submitted on June 25, 2021
+rwa_get_punch(bucket_name = "my_bucket", date = "2021-06-25")
+
+# Combine to only get excel files submitted in 2021
+rwa_get_punch(bucket_name = "my_bucket", extension = "xlsx", year = "2021")
+}
 }
