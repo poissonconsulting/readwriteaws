@@ -7,7 +7,7 @@
 #'
 #'
 ### change back to list
-rwa_read_files <- function(bucket_name,
+rwa_list_files <- function(bucket_name,
                            year = "",
                            module_name = "",
                            file_type = "") {
