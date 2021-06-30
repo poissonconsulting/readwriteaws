@@ -34,7 +34,7 @@ rwa_get_punch <- function(bucket_name, year = NULL,
   chk::chk_null_or(file_name, chk::chk_string)
 
   if(!is.null(year) & !is.null(date)){
-    stop("Only year or date can be supplied not both")
+    stop("only year or date can be supplied not both")
   }
 
   file_list <- rwa_read_files(bucket_name)
