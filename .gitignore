@@ -27,3 +27,5 @@ output-20[0-9][0-9]-[0-9][0-9]*
 report/
 
 Exported Items.bib
+
+inst/downloads
