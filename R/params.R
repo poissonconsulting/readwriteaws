@@ -5,7 +5,9 @@
 #' @keywords internal
 #' @name params
 #'
-#' @param bucket_name A string of the name of the AWS s3 bucket you are trying to access
+#' @param bucket_name A character string of the name of the AWS s3 bucket you are trying to access
+#'
+#' @param pattern A character string containing a regular expression to be matched in the given character vector
 #'
 #' @param year Regex filter param
 #' @param module_name Regex filter param
