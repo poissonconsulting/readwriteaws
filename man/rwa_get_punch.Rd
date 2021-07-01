@@ -8,8 +8,8 @@ rwa_get_punch(
   bucket_name,
   year = NULL,
   date = NULL,
-  file_extension = NULL,
-  file_name = NULL
+  file_name = NULL,
+  file_extension = NULL
 )
 }
 \arguments{
@@ -19,9 +19,9 @@ rwa_get_punch(
 
 \item{date}{Regex filter param format YYYY-MM-DD}
 
-\item{file_extension}{Regex filter param (think this is better then file_type)}
-
 \item{file_name}{Regex filter param}
+
+\item{file_extension}{Regex filter param (think this is better then file_type)}
 }
 \value{
 Vector of object names that match the filter criteria
