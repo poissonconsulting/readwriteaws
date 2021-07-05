@@ -8,7 +8,7 @@
 
 \item{pattern}{A character string containing a regular expression to be matched in the given character vector}
 
-\item{max_request_size}{An integer indicating the maximum request size sent to AWS}
+\item{max_request_size}{An integer indicating the maximum request size sent to AWS API}
 
 \item{year}{Regex filter param}
 

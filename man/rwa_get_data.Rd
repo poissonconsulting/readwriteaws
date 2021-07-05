@@ -11,7 +11,8 @@ rwa_get_data(
   month = NULL,
   day = NULL,
   file_name = NULL,
-  file_extension = NULL
+  file_extension = NULL,
+  max_request_size = 1000
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ rwa_get_data(
 \item{file_name}{Regex filter param}
 
 \item{file_extension}{Regex filter param}
+
+\item{max_request_size}{An integer indicating the maximum request size sent to AWS API}
 }
 \value{
 Vector of object names that match the filter criteria

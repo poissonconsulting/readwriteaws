@@ -9,7 +9,7 @@ rwa_list_files(bucket_name, max_request_size = 1000, pattern = ".*")
 \arguments{
 \item{bucket_name}{A character string of the name of the AWS s3 bucket you are trying to access}
 
-\item{max_request_size}{An integer indicating the maximum request size sent to AWS}
+\item{max_request_size}{An integer indicating the maximum request size sent to AWS API}
 
 \item{pattern}{A character string containing a regular expression to be matched in the given character vector}
 }
