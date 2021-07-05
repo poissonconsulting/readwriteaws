@@ -8,20 +8,21 @@ number_of_files <- function(bucket_name) {
   file_count
 }
 
-file_regex <- function(file_names = NULL,
-                       module_name = NULL,
-                       year = NULL, date, file_type) {
+generalize_if_null <- function(value) {
+  if (is.null(value)) {
+    value <- "...."
+  }
+  value
+}
 
+generalize_if_null_01 <- function(value) {
+  if (is.null(value)) {
+    value <- ".."
+  }
+  value
 }
 
 
-
-# grep("pdf.*2021-06-25.*csv", x, value = TRUE)
-#
-# paste0(NULL, "pdf")
-#
-#
-#
 
 
 
