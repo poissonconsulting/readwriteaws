@@ -6,7 +6,7 @@ test_that("functions works", {
                               max_request_size = 1000L,
                               pattern = ".*")
   expect_type(file_list, "character")
-  expect_equal(length(file_list), 14L)
+  expect_equal(length(file_list), 1014L)
 })
 
 test_that("regex pattern returns 2 images files", {
