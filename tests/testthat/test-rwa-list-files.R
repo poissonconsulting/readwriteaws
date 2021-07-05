@@ -3,7 +3,7 @@ bucket_name <- "readwriteaws-test-poissonconsulting"
 
 test_that("functions works", {
   file_list <- rwa_list_files(bucket_name = bucket_name,
-                              max_request_size = 1014,
+                              max_request_size = 2000,
                               pattern = ".*")
   expect_type(file_list, "character")
   expect_equal(length(file_list), 1014L)
@@ -23,12 +23,12 @@ test_that("regex pattern returns 2 logger files", {
   expect_equal(length(file_list), 2L)
 })
 
-
-
-
-
-
-
+test_that("regex pattern returns 4 pdf files", {
+  file_list <- rwa_list_files(bucket_name = bucket_name,
+                              max_request_size = 2000,
+                              pattern = "pdf")
+  expect_equal(length(file_list), 1004L)
+})
 
 test_that("regex pattern returns 3 punch files", {
   file_list <- rwa_list_files(bucket_name = bucket_name,
@@ -65,10 +65,12 @@ test_that("regex pattern returns 7 csv files", {
   expect_equal(length(file_list), 7L)
 })
 
-
-
-
-
+test_that("regex pattern returns 2 pdf files", {
+  file_list <- rwa_list_files(bucket_name = bucket_name,
+                              max_request_size = 2000,
+                              pattern = "\\.pdf")
+  expect_equal(length(file_list), 1002L)
+})
 
 test_that("regex pattern returns 14 files in 2021", {
   file_list <- rwa_list_files(bucket_name = bucket_name,
@@ -90,7 +92,7 @@ test_that("Max request of zero gives zero files", {
                               max_request_size = 0L,
                               pattern = "2021"
                              ),
-               0L
+               "must be greater than 0, not 0."
               )
 })
 
@@ -99,28 +101,3 @@ test_that("Max request of 10 gives 10 files", {
                               max_request_size = 10L)
   expect_equal(length(file_list), 10L)
 })
-
-
-
-
-
-
-### need to think about this one... because all the extra files are a pdf
-test_that("regex pattern returns 4 pdf files", {
-  file_list <- rwa_list_files(bucket_name = bucket_name,
-                              max_request_size = 2000,
-                              pattern = "pdf")
-  expect_equal(length(file_list), 1002L)
-})
-
-
-### need to figure this one out too...
-test_that("regex pattern returns 2 pdf files", {
-  file_list <- rwa_list_files(bucket_name = bucket_name,
-                              max_request_size = 2000,
-                              pattern = "\\.pdf")
-  expect_equal(length(file_list), 1988L)
-})
-
-
-
