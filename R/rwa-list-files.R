@@ -39,8 +39,10 @@ rwa_list_files <- function(bucket_name,
   chk::chk_gt(max_request_size, value = 0)
   chk::chk_string(pattern)
 
+  max_2 <- max_request_size
+
   start_after <- ""
-  all_keys <- c("")
+  all_keys <- c()
   s3 <- paws::s3()
   while (max_request_size > 0) {
       key_list <- s3$list_objects_v2(Bucket =  bucket_name,
@@ -49,16 +51,15 @@ rwa_list_files <- function(bucket_name,
                                     )
       key_names <- vapply(key_list$Contents, function(x) {x$Key}, "")
       all_keys <- c(all_keys, key_names)
-      n <- length(key_names)
-      start_after <- key_names[n]
-      max_request_size = max_request_size - n
+      start_after <- key_names[length(key_names)]
+      max_request_size = max_request_size - 1000
   }
 
   ## negative subtraction so we only get what we request
-  if (max_request_size < 0) {
-    n <- length(all_keys)
-    all_keys <- all_keys[1:(n+max_request_size)]
-  }
+   if (max_request_size > length(all_keys)) {
+     n <- max_2 + max_request_size
+     all_keys <- all_keys[1:n]
+   }
 
-  grep(pattern, all_keys, value = TRUE)
+   grep(pattern, all_keys, value = TRUE)
 }
