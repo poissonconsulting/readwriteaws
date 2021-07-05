@@ -16,9 +16,21 @@ rwa_list_files(bucket_name, max_request_size = 1000, pattern = ".*")
 \description{
 Lists all files from s3 bucket
 }
+\details{
+The AWS API only allows a max of 1000 objects to return per request.
+The \code{max_request_size} argument is for creating multiple requests to the API
+so you are able to get all the files if there are more then 1000 objects
+in your bucket. If \code{max_request_size} is over 1000 it will make multiple
+request to AWS until the \code{max_request_size} is reached.
+
+The \code{pattern} argument is a regex that is applied after all the files are
+obtained from AWS. If this argument is given you may get less
+then the value given for \code{max_request_size} as it will only return the
+objects that match the pattern.
+}
 \examples{
 \dontrun{
-# List all files in the bucket
+# List all files in the bucket up to a max of 1000
 rwa_list_files(bucket_name = "my-project-bucket")
 
 # Add regex to only list pdfs from June 30th
@@ -28,5 +40,9 @@ rwa_list_files(bucket_name = "my-project-bucket",
 # Add regex to only list files from 2021
 rwa_list_files(bucket_name = "my-project-bucket",
                pattern = "2021")
+
+# List all files in the bucket up to a max of 2000
+rwa_list_files(bucket_name = "my-project-bucket",
+               max_request_size = 2000)
 }
 }
