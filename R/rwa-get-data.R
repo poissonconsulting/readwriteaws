@@ -42,12 +42,10 @@ rwa_get_data <- function(bucket_name,
   chk::chk_gt(max_request_size, value = 0)
 
   ### need to deal with 01 vs 1
-  # swithc year, month, day
 
-  # % || % to deal with null,  year <- year %||% "\\d{4,4}"
-  year <- generalize_if_null(year)
-  month <- generalize_if_null_01(month)
-  day <- generalize_if_null_01(day)
+  year <- year %||% "\\d{4,4}"
+  month <- month %||% "\\d{2,2}"
+  day <- day %||% "\\d{2,2}"
 
   date <- paste(year, month, day, sep = "-")
   regex_pattern <- paste(data_type,

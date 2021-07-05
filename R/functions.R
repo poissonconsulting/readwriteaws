@@ -8,22 +8,7 @@ number_of_files <- function(bucket_name) {
   file_count
 }
 
-generalize_if_null <- function(value) {
-  if (is.null(value)) {
-    value <- "...."
-  }
-  value
-}
-
-generalize_if_null_01 <- function(value) {
-  if (is.null(value)) {
-    value <- ".."
-  }
-  value
-}
-
-
-
+`%||%` <- function(x, y) if (is.null(x) || length(x) == 0) y else x
 
 
 
