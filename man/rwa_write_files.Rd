@@ -11,7 +11,7 @@ rwa_write_files(file_names, directory, bucket_name)
 
 \item{directory}{A string that names the folder you want to save the objects into.}
 
-\item{bucket_name}{A string of the name of the AWS s3 bucket you are trying to access}
+\item{bucket_name}{A character string of the name of the AWS s3 bucket you are trying to access}
 }
 \description{
 Takes a vector of file names and saves them into that directory.

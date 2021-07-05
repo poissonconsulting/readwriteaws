@@ -4,17 +4,21 @@
 \alias{params}
 \title{Parameters for readwriteaws functions}
 \arguments{
-\item{bucket_name}{A string of the name of the AWS s3 bucket you are trying to access}
+\item{bucket_name}{A character string of the name of the AWS s3 bucket you are trying to access}
+
+\item{pattern}{A character string containing a regular expression to be matched in the given character vector}
+
+\item{max_request_size}{An integer indicating the maximum request size sent to AWS}
 
 \item{year}{Regex filter param}
 
-\item{module_name}{Regex filter param}
+\item{month}{Regex filter param format YYYY-MM-DD}
 
-\item{file_type}{Regex filter param}
+\item{day}{Regex filter param}
 
-\item{date}{Regex filter param format YYYY-MM-DD}
+\item{data_type}{Regex filter param}
 
-\item{file_extension}{Regex filter param (think this is better then file_type)}
+\item{file_extension}{Regex filter param}
 
 \item{file_name}{Regex filter param}
 

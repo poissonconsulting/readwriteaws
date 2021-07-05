@@ -7,8 +7,26 @@
 rwa_list_files(bucket_name, max_request_size = 1000, pattern = ".*")
 }
 \arguments{
-\item{bucket_name}{A string of the name of the AWS s3 bucket you are trying to access}
+\item{bucket_name}{A character string of the name of the AWS s3 bucket you are trying to access}
+
+\item{max_request_size}{An integer indicating the maximum request size sent to AWS}
+
+\item{pattern}{A character string containing a regular expression to be matched in the given character vector}
 }
 \description{
 Lists all files from s3 bucket
+}
+\examples{
+\dontrun{
+# List all files in the bucket
+rwa_list_files(bucket_name = "my-project-bucket")
+
+# Add regex to only list pdfs from June 30th
+rwa_list_files(bucket_name = "my-project-bucket",
+               pattern = "pdf.*2021-06-30")
+
+# Add regex to only list files from 2021
+rwa_list_files(bucket_name = "my-project-bucket",
+               pattern = "2021")
+}
 }
