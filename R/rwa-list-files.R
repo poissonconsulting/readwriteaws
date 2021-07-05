@@ -23,18 +23,45 @@ rwa_list_files <- function(bucket_name,
                            pattern = ".*") {
   chk::chk_string(bucket_name)
   chk::chk_whole_number(max_request_size)
-  # check that it is greater then 0
+  ?chk::chk_gt(max_request_size, value = 0)
   chk::chk_string(pattern)
 
-  s3 <- paws::s3()
-  key_list <- s3$list_objects_v2(Bucket = bucket_name, MaxKeys = max_request_size)
 
-  key_names <- lapply(key_list$Contents, function(x) {x$Key})
-  key_names <- unlist(key_names)
 
-  grep(pattern, key_names, value = TRUE)
+  if (max_request_size <= 1000) {
+    s3 <- paws::s3()
+    key_list <- s3$list_objects_v2(Bucket =  bucket_name, MaxKeys = max_request_size)
+  } else {
+    while (max_request_size > 0) {
+      print(max_request_size)
+      max_request_size = max_request_size - 1000
+    }
+  }
+
+
+  ### comment out for now
+  #key_names <- lapply(key_list$Contents, function(x) {x$Key})
+  #key_names <- unlist(key_names)
+  #grep(pattern, key_names, value = TRUE)
 }
 
-### some kind of tell the number, then it lets the user know to increase the max request size
-### then it will be some kind of iteration till it hits the end or the max number
-### need to create bucket with 1000 things in too... not sure how we shall be doing that...
+
+x <- rwa_list_files(bucket_name = "readwriteaws-test-poissonconsulting",
+               max_request_size = 1014)
+
+
+
+###
+
+i <- 1014
+while (i > 0) {
+  print(i)
+  i = i-1000
+}
+
+
+
+
+
+
+
