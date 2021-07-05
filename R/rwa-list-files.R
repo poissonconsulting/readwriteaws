@@ -23,45 +23,26 @@ rwa_list_files <- function(bucket_name,
                            pattern = ".*") {
   chk::chk_string(bucket_name)
   chk::chk_whole_number(max_request_size)
-  ?chk::chk_gt(max_request_size, value = 0)
+  chk::chk_gt(max_request_size, value = 0)
   chk::chk_string(pattern)
 
-
-
-  if (max_request_size <= 1000) {
-    s3 <- paws::s3()
-    key_list <- s3$list_objects_v2(Bucket =  bucket_name, MaxKeys = max_request_size)
-  } else {
-    while (max_request_size > 0) {
-      print(max_request_size)
-      max_request_size = max_request_size - 1000
-    }
+  start_after <- ""
+  all_keys <- c("")
+  s3 <- paws::s3()
+  while (max_request_size > 0) {
+      key_list <- s3$list_objects_v2(Bucket =  bucket_name, MaxKeys = max_request_size, StartAfter = start_after)
+      key_names <- vapply(key_list$Contents, function(x) {x$Key}, "")
+      all_keys <- c(all_keys, key_names)
+      n <- length(key_names)
+      start_after <- key_names[n]
+      max_request_size = max_request_size - n
   }
 
+  ## negative subtraction so we only get what we request
+  if (max_request_size < 0) {
+    n <- length(all_keys)
+    all_keys <- all_keys[1:(n+max_request_size)]
+  }
 
-  ### comment out for now
-  #key_names <- lapply(key_list$Contents, function(x) {x$Key})
-  #key_names <- unlist(key_names)
-  #grep(pattern, key_names, value = TRUE)
+  grep(pattern, all_keys, value = TRUE)
 }
-
-
-x <- rwa_list_files(bucket_name = "readwriteaws-test-poissonconsulting",
-               max_request_size = 1014)
-
-
-
-###
-
-i <- 1014
-while (i > 0) {
-  print(i)
-  i = i-1000
-}
-
-
-
-
-
-
-

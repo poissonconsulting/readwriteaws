@@ -29,7 +29,8 @@ rwa_get_data <- function(bucket_name,
                          month = NULL,
                          day = NULL,
                          file_name = NULL,
-                         file_extension = NULL) {
+                         file_extension = NULL,
+                         max_request_size = 1000) {
 
   chk::chk_null_or(data_type, chk::chk_string)
   chk::chk_null_or(year, chk::chk_string)
@@ -37,7 +38,8 @@ rwa_get_data <- function(bucket_name,
   chk::chk_null_or(day, chk::chk_string)
   chk::chk_null_or(file_name, chk::chk_string)
   chk::chk_null_or(file_extension, chk::chk_string)
-
+  chk::chk_whole_number(max_request_size)
+  chk::chk_gt(max_request_size, value = 0)
 
   ### need to deal with 01 vs 1
   # swithc year, month, day
@@ -53,6 +55,7 @@ rwa_get_data <- function(bucket_name,
                          file_name,
                          file_extension,
                          sep = ".*")
-  file_list <- rwa_list_files(bucket_name, pattern = regex_pattern)
+  file_list <- rwa_list_files(bucket_name,
+                              pattern = regex_pattern,
+                              max_request_size = max_request_size)
 }
-

@@ -8,7 +8,7 @@
 #' @param bucket_name A character string of the name of the AWS s3 bucket you are trying to access
 #'
 #' @param pattern A character string containing a regular expression to be matched in the given character vector
-#' @param max_request_size An integer indicating the maximum request size sent to AWS
+#' @param max_request_size An integer indicating the maximum request size sent to AWS API
 #'
 #' @param year Regex filter param
 #' @param month Regex filter param format YYYY-MM-DD
