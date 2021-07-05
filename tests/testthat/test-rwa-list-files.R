@@ -23,7 +23,7 @@ test_that("regex pattern returns 2 logger files", {
   expect_equal(length(file_list), 2L)
 })
 
-test_that("regex pattern returns 4 pdf files", {
+test_that("regex pattern returns 1004 pdf files", {
   file_list <- rwa_list_files(bucket_name = bucket_name,
                               max_request_size = 2000,
                               pattern = "pdf")
@@ -65,7 +65,7 @@ test_that("regex pattern returns 7 csv files", {
   expect_equal(length(file_list), 7L)
 })
 
-test_that("regex pattern returns 2 pdf files", {
+test_that("regex pattern returns 1002 pdf files", {
   file_list <- rwa_list_files(bucket_name = bucket_name,
                               max_request_size = 2000,
                               pattern = "\\.pdf")
