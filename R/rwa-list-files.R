@@ -39,8 +39,6 @@ rwa_list_files <- function(bucket_name,
   chk::chk_gt(max_request_size, value = 0)
   chk::chk_string(pattern)
 
-  max_2 <- max_request_size
-
   start_after <- ""
   all_keys <- c()
   s3 <- paws::s3()
