@@ -89,7 +89,7 @@ test_that("function errors out when no bucket name not the same", {
 test_that("Max request of zero gives zero files", {
   file_list <-
   expect_error(rwa_list_files(bucket_name = bucket_name,
-                              max_request_size = 0L,
+                              max_request_size = 0,
                               pattern = "2021"
                              ),
                "must be greater than 0, not 0."
@@ -98,6 +98,18 @@ test_that("Max request of zero gives zero files", {
 
 test_that("Max request of 10 gives 10 files", {
   file_list <- rwa_list_files(bucket_name = bucket_name,
-                              max_request_size = 10L)
+                              max_request_size = 10)
   expect_equal(length(file_list), 10L)
+})
+
+test_that("Max request of 1 gives 1 files", {
+  file_list <- rwa_list_files(bucket_name = bucket_name,
+                              max_request_size = 1)
+  expect_equal(length(file_list), 1L)
+})
+
+test_that("Max request of 1014 gives 1014 files", {
+  file_list <- rwa_list_files(bucket_name = bucket_name,
+                              max_request_size = 1014)
+  expect_equal(length(file_list), 1014L)
 })
