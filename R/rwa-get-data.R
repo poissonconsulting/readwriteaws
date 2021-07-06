@@ -11,16 +11,13 @@
 #' rwa_get_data(bucket_name = "my_bucket")
 #'
 #' # Get only punch data from 2021
-#' rwa_get_data(bucket_name = "my_bucket", year = "2021")
+#' rwa_get_data(bucket_name = "my_bucket", year = 2021)
 #'
 #' # Get only the csv files
 #' rwa_get_data(bucket_name = "my_bucket", extension = "csv")
 #'
-#' # Get only data submitted on June 25, 2021
-#' rwa_get_data(bucket_name = "my_bucket", date = "2021-06-25")
-#'
 #' # Combine to only get excel files submitted in 2021
-#' rwa_get_data(bucket_name = "my_bucket", extension = "xlsx", year = "2021")
+#' rwa_get_data(bucket_name = "my_bucket", extension = "xlsx", year = 2021)
 #' }
 #' @export
 rwa_get_data <- function(bucket_name,
@@ -33,9 +30,12 @@ rwa_get_data <- function(bucket_name,
                          max_request_size = 1000) {
 
   chk::chk_null_or(data_type, chk::chk_string)
-  chk::chk_null_or(year, chk::chk_string)
-  chk::chk_null_or(month, chk::chk_string)
-  chk::chk_null_or(day, chk::chk_string)
+  chk::chk_null_or(year, chk::chk_whole_number)
+  chk::chk_range(year, range = c(1900, 2100))
+  chk::chk_null_or(month, chk::chk_whole_number)
+  chk::chk_range(month, range = c(1, 12))
+  chk::chk_null_or(day, chk::chk_whole_number)
+  chk::chk_range(day, range = c(1, 31))
   chk::chk_null_or(file_name, chk::chk_string)
   chk::chk_null_or(file_extension, chk::chk_string)
   chk::chk_whole_number(max_request_size)

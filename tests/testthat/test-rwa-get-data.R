@@ -8,6 +8,20 @@ test_that("get 2 image related files", {
   expect_equal(length(file_list), 2L)
 })
 
+test_that("get 2 image related files", {
+  file_list <- rwa_get_data(bucket_name = bucket_name,
+                            data_type = "image",
+                            max_request_size = 1014)
+  expect_equal(length(file_list), 2L)
+})
+
+test_that("get 2 image related files", {
+  file_list <- rwa_get_data(bucket_name = bucket_name,
+                            data_type = "image",
+                            max_request_size = 1000)
+  expect_equal(length(file_list), 0L)
+})
+
 test_that("get 2 logger related files", {
   file_list <- rwa_get_data(bucket_name = bucket_name,
                             data_type = "logger",
@@ -39,9 +53,9 @@ test_that("get 3 tracks related files", {
 test_that("get 2 files - pdf and year, month, day", {
   file_list <- rwa_get_data(bucket_name = bucket_name,
                             data_type = "pdf",
-                            year = "2021",
-                            month = "06",
-                            day = "30",
+                            year = 2021,
+                            month = 06,
+                            day = 30,
                             max_request_size = 2000)
   expect_equal(length(file_list), 2L)
 })
@@ -49,7 +63,7 @@ test_that("get 2 files - pdf and year, month, day", {
 test_that("get 4 files - pdf and year", {
   file_list <- rwa_get_data(bucket_name = bucket_name,
                             data_type = "pdf",
-                            year = "2021",
+                            year = 2021,
                             max_request_size = 2000)
   expect_equal(length(file_list), 4L)
 })
@@ -57,16 +71,16 @@ test_that("get 4 files - pdf and year", {
 test_that("get 2 files - pdf and year, month", {
   file_list <- rwa_get_data(bucket_name = bucket_name,
                             data_type = "pdf",
-                            year = "2021",
-                            month = "06",
+                            year = 2021,
+                            month = 06,
                             max_request_size = 2000)
   expect_equal(length(file_list), 2L)
 })
 
 test_that("get 5 files - year & month", {
   file_list <- rwa_get_data(bucket_name = bucket_name,
-                            year = "2021",
-                            month = "07",
+                            year = 2021,
+                            month = 07,
                             max_request_size = 2000)
   expect_equal(length(file_list), 5L)
 })
@@ -74,7 +88,7 @@ test_that("get 5 files - year & month", {
 test_that("get 2 files - pdf and day", {
   file_list <- rwa_get_data(bucket_name = bucket_name,
                             data_type = "pdf",
-                            day = "30",
+                            day = 30,
                             max_request_size = 2000)
   expect_equal(length(file_list), 2L)
 })
@@ -114,23 +128,23 @@ test_that("get 1 files - file extension gpx", {
   expect_equal(length(file_list), 1L)
 })
 
-test_that("error when year is not passed as string", {
+test_that("error when year is passed as string", {
   expect_error(rwa_get_data(bucket_name = bucket_name,
-                            year = 2021,
+                            year = "2021",
                             max_request_size = 2000),
-               regexp = "must be a string")
+               regexp = "must be a whole number")
 })
 
-test_that("error when month is not passed as string", {
+test_that("error when month is passed as string", {
   expect_error(rwa_get_data(bucket_name = bucket_name,
-                            month = 07,
+                            month = "07",
                             max_request_size = 2000),
-               regexp = "must be a string")
+               regexp = "must be a whole number")
 })
 
-test_that("error when month is not passed as string", {
+test_that("error when month is passed as string", {
   expect_error(rwa_get_data(bucket_name = bucket_name,
-                            day = 30,
+                            day = "30",
                             max_request_size = 2000),
-               regexp = "must be a string")
+               regexp = "must be a whole number")
 })
