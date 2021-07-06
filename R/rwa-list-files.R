@@ -55,11 +55,5 @@ rwa_list_files <- function(bucket_name,
       max_request_size = max_request_size - 1000
   }
 
-  ## negative subtraction so we only get what we request
-   if (max_request_size > length(all_keys)) {
-     n <- max_2 + max_request_size
-     all_keys <- all_keys[1:n]
-   }
-
    grep(pattern, all_keys, value = TRUE)
 }
