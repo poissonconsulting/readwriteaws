@@ -41,11 +41,12 @@ rwa_get_data <- function(bucket_name,
   chk::chk_whole_number(max_request_size)
   chk::chk_gt(max_request_size, value = 0)
 
-  ### need to deal with 01 vs 1
-
   year <- year %||% "\\d{4,4}"
   month <- month %||% "\\d{2,2}"
   day <- day %||% "\\d{2,2}"
+
+  day <- pad_dates(day)
+  month <- pad_dates(month)
 
   date <- paste(year, month, day, sep = "-")
   regex_pattern <- paste(data_type,
@@ -57,3 +58,6 @@ rwa_get_data <- function(bucket_name,
                               pattern = regex_pattern,
                               max_request_size = max_request_size)
 }
+
+
+
