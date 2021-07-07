@@ -14,9 +14,11 @@ rwa_write_files <- function(file_names, directory, bucket_name) {
   pb$tick(0)
   for (file in file_names) {
     pb$tick()
-    save_location <- paste0(directory,"/", file)
-    aws.s3::save_object(object = file,
-                        bucket = bucket_name,
-                        file = save_location)
+    save_location <- paste0(directory, "/", file)
+    aws.s3::save_object(
+      object = file,
+      bucket = bucket_name,
+      file = save_location
+    )
   }
 }

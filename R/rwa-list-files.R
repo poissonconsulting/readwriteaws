@@ -19,16 +19,22 @@
 #' rwa_list_files(bucket_name = "my-project-bucket")
 #'
 #' # Add regex to only list pdfs from June 30th
-#' rwa_list_files(bucket_name = "my-project-bucket",
-#'                pattern = "pdf.*2021-06-30")
+#' rwa_list_files(
+#'   bucket_name = "my-project-bucket",
+#'   pattern = "pdf.*2021-06-30"
+#' )
 #'
 #' # Add regex to only list files from 2021
-#' rwa_list_files(bucket_name = "my-project-bucket",
-#'                pattern = "2021")
+#' rwa_list_files(
+#'   bucket_name = "my-project-bucket",
+#'   pattern = "2021"
+#' )
 #'
 #' # List all files in the bucket up to a max of 2000
-#' rwa_list_files(bucket_name = "my-project-bucket",
-#'                max_request_size = 2000)
+#' rwa_list_files(
+#'   bucket_name = "my-project-bucket",
+#'   max_request_size = 2000
+#' )
 #' }
 #' @export
 rwa_list_files <- function(bucket_name,
@@ -45,14 +51,17 @@ rwa_list_files <- function(bucket_name,
   all_keys <- c()
   s3 <- paws::s3()
   while (max_request_size > 0) {
-      key_list <- s3$list_objects_v2(Bucket =  bucket_name,
-                                     MaxKeys = max_request_size,
-                                     StartAfter = start_after
-                                    )
-      key_names <- vapply(key_list$Contents, function(x) {x$Key}, "")
-      all_keys <- c(all_keys, key_names)
-      start_after <- key_names[length(key_names)]
-      max_request_size = max_request_size - 1000
+    key_list <- s3$list_objects_v2(
+      Bucket = bucket_name,
+      MaxKeys = max_request_size,
+      StartAfter = start_after
+    )
+    key_names <- vapply(key_list$Contents, function(x) {
+      x$Key
+    }, "")
+    all_keys <- c(all_keys, key_names)
+    start_after <- key_names[length(key_names)]
+    max_request_size <- max_request_size - 1000
   }
 
   if (!silent) {
@@ -65,14 +74,14 @@ rwa_list_files <- function(bucket_name,
     }
   }
 
-   filter_files <- grep(pattern, all_keys, value = TRUE)
+  filter_files <- grep(pattern, all_keys, value = TRUE)
 
-   if (!silent) {
-     msg <- paste(length(filter_files), "files returned after {usethis::ui_path('pattern')}  is applied")
-     usethis::ui_info(msg)
-   }
+  if (!silent) {
+    msg <- paste(length(filter_files), "files returned after {usethis::ui_path('pattern')}  is applied")
+    usethis::ui_info(msg)
+  }
 
-   filter_files
+  filter_files
 }
 
 # msg <- "hello"
@@ -90,6 +99,3 @@ rwa_list_files <- function(bucket_name,
 # ui_unset(msg)
 # ui_value(msg)
 # ui_warn(msg)
-
-
-
