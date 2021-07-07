@@ -27,6 +27,8 @@
 \item{file_list}{A vector containing a list of files from the object names in AWS}
 
 \item{directory}{A string that names the folder you want to save the objects into.}
+
+\item{progress}{A logical flag to turn on and off the progress bar}
 }
 \description{
 Descriptions of the parameters for readwriteaws functions
