@@ -5,7 +5,8 @@ test_that("functions works", {
   file_list <- rwa_list_files(
     bucket_name = bucket_name,
     max_request_size = 2000,
-    pattern = ".*"
+    pattern = ".*",
+    silent = TRUE
   )
   expect_type(file_list, "character")
   expect_equal(length(file_list), 1014L)
@@ -15,7 +16,8 @@ test_that("regex pattern returns 2 images files", {
   file_list <- rwa_list_files(
     bucket_name = bucket_name,
     max_request_size = 2000,
-    pattern = "image"
+    pattern = "image",
+    silent = TRUE
   )
   expect_equal(length(file_list), 2L)
 })
@@ -24,7 +26,8 @@ test_that("regex pattern returns 2 logger files", {
   file_list <- rwa_list_files(
     bucket_name = bucket_name,
     max_request_size = 2000,
-    pattern = "logger"
+    pattern = "logger",
+    silent = TRUE
   )
   expect_equal(length(file_list), 2L)
 })
@@ -33,7 +36,8 @@ test_that("regex pattern returns 1004 pdf files", {
   file_list <- rwa_list_files(
     bucket_name = bucket_name,
     max_request_size = 2000,
-    pattern = "pdf"
+    pattern = "pdf",
+    silent = TRUE
   )
   expect_equal(length(file_list), 1004L)
 })
@@ -42,7 +46,8 @@ test_that("regex pattern returns 3 punch files", {
   file_list <- rwa_list_files(
     bucket_name = bucket_name,
     max_request_size = 2000,
-    pattern = "punch"
+    pattern = "punch",
+    silent = TRUE
   )
   expect_equal(length(file_list), 3L)
 })
@@ -51,7 +56,8 @@ test_that("regex pattern returns 3 tracks files", {
   file_list <- rwa_list_files(
     bucket_name = bucket_name,
     max_request_size = 2000,
-    pattern = "tracks"
+    pattern = "tracks",
+    silent = TRUE
   )
   expect_equal(length(file_list), 3L)
 })
@@ -60,7 +66,8 @@ test_that("regex pattern returns 9 files from June 30th", {
   file_list <- rwa_list_files(
     bucket_name = bucket_name,
     max_request_size = 2000,
-    pattern = "2021-06-30"
+    pattern = "2021-06-30",
+    silent = TRUE
   )
   expect_equal(length(file_list), 9L)
 })
@@ -69,7 +76,8 @@ test_that("regex pattern returns 5 files from July 1st", {
   file_list <- rwa_list_files(
     bucket_name = bucket_name,
     max_request_size = 2000,
-    pattern = "2021-07-01"
+    pattern = "2021-07-01",
+    silent = TRUE
   )
   expect_equal(length(file_list), 5L)
 })
@@ -78,7 +86,8 @@ test_that("regex pattern returns 7 csv files", {
   file_list <- rwa_list_files(
     bucket_name = bucket_name,
     max_request_size = 2000,
-    pattern = "\\.csv"
+    pattern = "\\.csv",
+    silent = TRUE
   )
   expect_equal(length(file_list), 7L)
 })
@@ -87,7 +96,8 @@ test_that("regex pattern returns 1002 pdf files", {
   file_list <- rwa_list_files(
     bucket_name = bucket_name,
     max_request_size = 2000,
-    pattern = "\\.pdf"
+    pattern = "\\.pdf",
+    silent = TRUE
   )
   expect_equal(length(file_list), 1002L)
 })
@@ -96,7 +106,8 @@ test_that("regex pattern returns 14 files in 2021", {
   file_list <- rwa_list_files(
     bucket_name = bucket_name,
     max_request_size = 2000,
-    pattern = "2021"
+    pattern = "2021",
+    silent = TRUE
   )
   expect_equal(length(file_list), 14L)
 })
@@ -105,7 +116,8 @@ test_that("function errors out when no bucket name not the same", {
   expect_error(rwa_list_files(
     bucket_name = "any-bucket",
     max_request_size = 2000,
-    pattern = "2021"
+    pattern = "2021",
+    silent = TRUE
   ),
   regexp = "301"
   )
@@ -117,7 +129,8 @@ test_that("Max request of zero gives zero files", {
       rwa_list_files(
         bucket_name = bucket_name,
         max_request_size = 0,
-        pattern = "2021"
+        pattern = "2021",
+        silent = TRUE
       ),
       "must be greater than 0, not 0."
     )
@@ -126,7 +139,8 @@ test_that("Max request of zero gives zero files", {
 test_that("Max request of 10 gives 10 files", {
   file_list <- rwa_list_files(
     bucket_name = bucket_name,
-    max_request_size = 10
+    max_request_size = 10,
+    silent = TRUE
   )
   expect_equal(length(file_list), 10L)
 })
@@ -134,7 +148,8 @@ test_that("Max request of 10 gives 10 files", {
 test_that("Max request of 1 gives 1 files", {
   file_list <- rwa_list_files(
     bucket_name = bucket_name,
-    max_request_size = 1
+    max_request_size = 1,
+    silent = TRUE
   )
   expect_equal(length(file_list), 1L)
 })
@@ -142,7 +157,8 @@ test_that("Max request of 1 gives 1 files", {
 test_that("Max request of 1014 gives 1014 files", {
   file_list <- rwa_list_files(
     bucket_name = bucket_name,
-    max_request_size = 1014
+    max_request_size = 1014,
+    silent = TRUE
   )
   expect_equal(length(file_list), 1014L)
 })
