@@ -41,15 +41,21 @@ objects that match the pattern.
 rwa_list_files(bucket_name = "my-project-bucket")
 
 # Add regex to only list pdfs from June 30th
-rwa_list_files(bucket_name = "my-project-bucket",
-               pattern = "pdf.*2021-06-30")
+rwa_list_files(
+  bucket_name = "my-project-bucket",
+  pattern = "pdf.*2021-06-30"
+)
 
 # Add regex to only list files from 2021
-rwa_list_files(bucket_name = "my-project-bucket",
-               pattern = "2021")
+rwa_list_files(
+  bucket_name = "my-project-bucket",
+  pattern = "2021"
+)
 
 # List all files in the bucket up to a max of 2000
-rwa_list_files(bucket_name = "my-project-bucket",
-               max_request_size = 2000)
+rwa_list_files(
+  bucket_name = "my-project-bucket",
+  max_request_size = 2000
+)
 }
 }

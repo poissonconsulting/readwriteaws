@@ -12,7 +12,8 @@ rwa_get_data(
   day = NULL,
   file_name = NULL,
   file_extension = NULL,
-  max_request_size = 1000
+  max_request_size = 1000,
+  silent = FALSE
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ rwa_get_data(
 \item{file_extension}{Regex filter param}
 
 \item{max_request_size}{An integer indicating the maximum request size sent to AWS API}
+
+\item{silent}{A flag to turn on and off messages about bucket object numbers}
 }
 \value{
 Vector of object names that match the filter criteria
