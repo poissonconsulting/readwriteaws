@@ -83,19 +83,3 @@ rwa_list_files <- function(bucket_name,
 
   filter_files
 }
-
-# msg <- "hello"
-#
-# ui_code(msg)
-# ui_code_block(msg)
-# ui_done(msg)
-# ui_field(msg)
-# ui_info(msg)
-# ui_line(msg)
-# ui_oops(msg)
-# ui_path(msg)
-# ui_silence(msg)
-# ui_todo(msg)
-# ui_unset(msg)
-# ui_value(msg)
-# ui_warn(msg)
