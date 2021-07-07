@@ -33,12 +33,14 @@
 #' @export
 rwa_list_files <- function(bucket_name,
                            max_request_size = 1000,
-                           pattern = ".*") {
+                           pattern = ".*",
+                           silent = FALSE) {
   chk::chk_string(bucket_name)
   chk::chk_whole_number(max_request_size)
   chk::chk_gt(max_request_size, value = 0)
   chk::chk_string(pattern)
 
+  input_max_request <- max_request_size
   start_after <- ""
   all_keys <- c()
   s3 <- paws::s3()
@@ -53,5 +55,41 @@ rwa_list_files <- function(bucket_name,
       max_request_size = max_request_size - 1000
   }
 
-   grep(pattern, all_keys, value = TRUE)
+  if (!silent) {
+    no_all_keys <- length(all_keys)
+    msg <- paste(no_all_keys, "files were retrieved from AWS")
+    usethis::ui_info(msg)
+
+    if (input_max_request == no_all_keys) {
+      usethis::ui_warn("{usethis::ui_path('Max_request_size')} matches retrieved files from AWS. Think about increasing {usethis::ui_path('Max_request_size')} as there could be more files present")
+    }
+  }
+
+   filter_files <- grep(pattern, all_keys, value = TRUE)
+
+   if (!silent) {
+     msg <- paste(length(filter_files), "files returned after {usethis::ui_path('pattern')}  is applied")
+     usethis::ui_info(msg)
+   }
+
+   filter_files
 }
+
+# msg <- "hello"
+#
+# ui_code(msg)
+# ui_code_block(msg)
+# ui_done(msg)
+# ui_field(msg)
+# ui_info(msg)
+# ui_line(msg)
+# ui_oops(msg)
+# ui_path(msg)
+# ui_silence(msg)
+# ui_todo(msg)
+# ui_unset(msg)
+# ui_value(msg)
+# ui_warn(msg)
+
+
+
