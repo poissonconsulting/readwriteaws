@@ -1,11 +1,11 @@
-#' Save Files to Local Drive
+#' Download Files from AWS to Local Drive
 #'
-#' Takes a vector of file names and saves them into that directory.
+#' Copies files from your AWS s3 bucket to your local drive
 #' @inheritParams params
 #'
 #' @export
 #'
-rwa_write_files <- function(file_list, directory, bucket_name) {
+rwa_download_files <- function(file_list, directory, bucket_name) {
   chk::chk_vector(file_list)
   chk::chk_string(directory)
 
