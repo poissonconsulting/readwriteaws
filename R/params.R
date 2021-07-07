@@ -9,10 +9,11 @@
 #'
 #' @param pattern A character string containing a regular expression to be matched in the given character vector
 #' @param max_request_size An integer indicating the maximum request size sent to AWS API
+#' @param silent A flag to turn on and off messages about bucket object numbers
 #'
 #' @param year Regex filter param
-#' @param month Regex filter param format YYYY-MM-DD
-#' @param day Regex filter param
+#' @param month Regex filter param - format MM
+#' @param day Regex filter param - format DD
 #' @param data_type Regex filter param
 #' @param file_extension Regex filter param
 #' @param file_name Regex filter param
