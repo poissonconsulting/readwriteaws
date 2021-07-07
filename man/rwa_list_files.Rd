@@ -18,7 +18,7 @@ rwa_list_files(
 
 \item{pattern}{A character string containing a regular expression to be matched in the given character vector}
 
-\item{silent}{A flag to turn on and off messages about bucket object numbers}
+\item{silent}{A logical flag to turn on and off messages about number of files returned}
 }
 \description{
 Lists all files from s3 bucket

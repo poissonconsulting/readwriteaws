@@ -19,21 +19,21 @@ rwa_get_data(
 \arguments{
 \item{bucket_name}{A character string of the name of the AWS s3 bucket you are trying to access}
 
-\item{data_type}{Regex filter param}
+\item{data_type}{A character string for which data you want to return. Options currently include punch-data, tracks, logger, image and pdf.}
 
-\item{year}{Regex filter param}
+\item{year}{A numeric value for what years you want returned. Format YYYY}
 
-\item{month}{Regex filter param - format MM}
+\item{month}{A numeric value for what month you want returned. Format MM}
 
-\item{day}{Regex filter param - format DD}
+\item{day}{A numeric value for what day you want returned. Format DD}
 
-\item{file_name}{Regex filter param}
+\item{file_name}{A character string for which file names you want}
 
-\item{file_extension}{Regex filter param}
+\item{file_extension}{A character string for which file extension you want without the period}
 
 \item{max_request_size}{An integer indicating the maximum request size sent to AWS API}
 
-\item{silent}{A flag to turn on and off messages about bucket object numbers}
+\item{silent}{A logical flag to turn on and off messages about number of files returned}
 }
 \value{
 Vector of object names that match the filter criteria

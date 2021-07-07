@@ -10,21 +10,21 @@
 
 \item{max_request_size}{An integer indicating the maximum request size sent to AWS API}
 
-\item{silent}{A flag to turn on and off messages about bucket object numbers}
+\item{silent}{A logical flag to turn on and off messages about number of files returned}
 
-\item{year}{Regex filter param}
+\item{year}{A numeric value for what years you want returned. Format YYYY}
 
-\item{month}{Regex filter param - format MM}
+\item{month}{A numeric value for what month you want returned. Format MM}
 
-\item{day}{Regex filter param - format DD}
+\item{day}{A numeric value for what day you want returned. Format DD}
 
-\item{data_type}{Regex filter param}
+\item{data_type}{A character string for which data you want to return. Options currently include punch-data, tracks, logger, image and pdf.}
 
-\item{file_extension}{Regex filter param}
+\item{file_extension}{A character string for which file extension you want without the period}
 
-\item{file_name}{Regex filter param}
+\item{file_name}{A character string for which file names you want}
 
-\item{file_names}{A vector containing a list of files from the object names in AWS}
+\item{file_list}{A vector containing a list of files from the object names in AWS}
 
 \item{directory}{A string that names the folder you want to save the objects into.}
 }

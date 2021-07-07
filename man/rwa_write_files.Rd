@@ -4,10 +4,10 @@
 \alias{rwa_write_files}
 \title{Save Files to Local Drive}
 \usage{
-rwa_write_files(file_names, directory, bucket_name)
+rwa_write_files(file_list, directory, bucket_name)
 }
 \arguments{
-\item{file_names}{A vector containing a list of files from the object names in AWS}
+\item{file_list}{A vector containing a list of files from the object names in AWS}
 
 \item{directory}{A string that names the folder you want to save the objects into.}
 
