@@ -4,3 +4,5 @@
 ^inst$
 ^scripts$
 ^CODE_OF_CONDUCT\.md$
+^README.Rmd$
+^docs$
