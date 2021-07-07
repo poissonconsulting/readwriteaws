@@ -10,11 +10,13 @@
 
 \item{max_request_size}{An integer indicating the maximum request size sent to AWS API}
 
+\item{silent}{A flag to turn on and off messages about bucket object numbers}
+
 \item{year}{Regex filter param}
 
-\item{month}{Regex filter param format YYYY-MM-DD}
+\item{month}{Regex filter param - format MM}
 
-\item{day}{Regex filter param}
+\item{day}{Regex filter param - format DD}
 
 \item{data_type}{Regex filter param}
 

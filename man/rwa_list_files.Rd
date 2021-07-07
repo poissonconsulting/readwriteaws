@@ -4,7 +4,12 @@
 \alias{rwa_list_files}
 \title{List Files in S3 Bucket}
 \usage{
-rwa_list_files(bucket_name, max_request_size = 1000, pattern = ".*")
+rwa_list_files(
+  bucket_name,
+  max_request_size = 1000,
+  pattern = ".*",
+  silent = FALSE
+)
 }
 \arguments{
 \item{bucket_name}{A character string of the name of the AWS s3 bucket you are trying to access}
@@ -12,6 +17,8 @@ rwa_list_files(bucket_name, max_request_size = 1000, pattern = ".*")
 \item{max_request_size}{An integer indicating the maximum request size sent to AWS API}
 
 \item{pattern}{A character string containing a regular expression to be matched in the given character vector}
+
+\item{silent}{A flag to turn on and off messages about bucket object numbers}
 }
 \description{
 Lists all files from s3 bucket

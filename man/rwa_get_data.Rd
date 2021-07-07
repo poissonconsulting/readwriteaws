@@ -22,9 +22,9 @@ rwa_get_data(
 
 \item{year}{Regex filter param}
 
-\item{month}{Regex filter param format YYYY-MM-DD}
+\item{month}{Regex filter param - format MM}
 
-\item{day}{Regex filter param}
+\item{day}{Regex filter param - format DD}
 
 \item{file_name}{Regex filter param}
 
@@ -44,15 +44,12 @@ Lists only punch data files
 rwa_get_data(bucket_name = "my_bucket")
 
 # Get only punch data from 2021
-rwa_get_data(bucket_name = "my_bucket", year = "2021")
+rwa_get_data(bucket_name = "my_bucket", year = 2021)
 
 # Get only the csv files
 rwa_get_data(bucket_name = "my_bucket", extension = "csv")
 
-# Get only data submitted on June 25, 2021
-rwa_get_data(bucket_name = "my_bucket", date = "2021-06-25")
-
 # Combine to only get excel files submitted in 2021
-rwa_get_data(bucket_name = "my_bucket", extension = "xlsx", year = "2021")
+rwa_get_data(bucket_name = "my_bucket", extension = "xlsx", year = 2021)
 }
 }
