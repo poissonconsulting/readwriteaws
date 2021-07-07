@@ -27,7 +27,8 @@ rwa_get_data <- function(bucket_name,
                          day = NULL,
                          file_name = NULL,
                          file_extension = NULL,
-                         max_request_size = 1000) {
+                         max_request_size = 1000,
+                         silent = FALSE) {
   chk::chk_null_or(data_type, chk::chk_string)
   chk::chk_null_or(year, chk::chk_whole_number)
   chk::chk_range(year, range = c(1900, 2100))
@@ -56,6 +57,7 @@ rwa_get_data <- function(bucket_name,
   )
   file_list <- rwa_list_files(bucket_name,
     pattern = regex_pattern,
-    max_request_size = max_request_size
+    max_request_size = max_request_size,
+    silent = silent
   )
 }
