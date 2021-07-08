@@ -22,4 +22,6 @@
 #' @param file_list A vector containing a list of files from the object names in AWS
 #' @param directory A string that names the folder you want to save the objects into.
 #' @param ask A logical flag that turns on and off whether you want to be asked about overwriting files. If set to TRUE you will be asked before proceeding if the directory given is not empty.
+#'
+#' @param bucket_path A character string for adding a different folder to where the files are saved in your bucket. Default it "" which means it saves in the directory given by file_list and directory.
 NULL
