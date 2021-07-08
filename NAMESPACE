@@ -3,3 +3,4 @@
 export(rwa_download_files)
 export(rwa_get_data)
 export(rwa_list_files)
+export(rwa_upload_files)
