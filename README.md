@@ -26,6 +26,18 @@ To install the latest version from
 remotes::install_github("poissonconsulting/readwriteaws")
 ```
 
+## Credentials
+
+Credentials need to be set up properly so you have permission to access
+AWS. It is recommended to put the credentials in your .Renviron file.
+The names of the variables must match below or you will not be
+authenticated. Both region arguments must be present.
+
+    AWS_ACCESS_KEY_ID=GET_FROM_AWS_USER
+    AWS_SECRET_ACCESS_KEY=GET_FROM_AWS_USER
+    AWS_REGION=ca-central-1
+    AWS_DEFAULT_REGION=ca-central-1
+
 ## Examples
 
 ## How to Contribute
