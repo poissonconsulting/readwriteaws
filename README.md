@@ -31,12 +31,14 @@ remotes::install_github("poissonconsulting/readwriteaws")
 Credentials need to be set up properly so you have permission to access
 AWS. It is recommended to put the credentials in your .Renviron file.
 The names of the variables must match below or you will not be
-authenticated. Both region arguments must be present.
+authenticated.
 
     AWS_ACCESS_KEY_ID=GET_FROM_AWS_USER
     AWS_SECRET_ACCESS_KEY=GET_FROM_AWS_USER
     AWS_REGION=ca-central-1
-    AWS_DEFAULT_REGION=ca-central-1
+
+Credentials can also be passed to the functions directly. See examples
+for more info.
 
 ## Examples
 
