@@ -40,16 +40,30 @@
 rwa_list_files <- function(bucket_name,
                            max_request_size = 1000,
                            pattern = ".*",
-                           silent = FALSE) {
+                           silent = FALSE,
+                           aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
+                           aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
+                           region = Sys.getenv("AWS_REGION", "ca-central-1")) {
   chk::chk_string(bucket_name)
   chk::chk_whole_number(max_request_size)
   chk::chk_gt(max_request_size, value = 0)
   chk::chk_string(pattern)
+  chk::chk_string(aws_access_key_id)
+  chk::chk_string(aws_secret_access_key)
+  chk::chk_string(region)
 
   input_max_request <- max_request_size
   start_after <- ""
   all_keys <- c()
-  s3 <- paws::s3()
+  s3 <- paws::s3(config = list(
+    credentials = list(creds = list(
+      access_key_id = aws_access_key_id,
+      secret_access_key = aws_secret_access_key
+    )),
+    region = region
+  ))
+
+
   while (max_request_size > 0) {
     key_list <- s3$list_objects_v2(
       Bucket = bucket_name,

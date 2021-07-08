@@ -28,7 +28,11 @@ rwa_get_data <- function(bucket_name,
                          file_name = NULL,
                          file_extension = NULL,
                          max_request_size = 1000,
-                         silent = FALSE) {
+                         silent = FALSE,
+                         aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
+                         aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
+                         region = Sys.getenv("AWS_REGION", "ca-central-1")) {
+
   chk::chk_null_or(data_type, chk::chk_string)
   chk::chk_null_or(year, chk::chk_whole_number)
   chk::chk_range(year, range = c(1900, 2100))
@@ -40,6 +44,9 @@ rwa_get_data <- function(bucket_name,
   chk::chk_null_or(file_extension, chk::chk_string)
   chk::chk_whole_number(max_request_size)
   chk::chk_gt(max_request_size, value = 0)
+  chk::chk_string(aws_access_key_id)
+  chk::chk_string(aws_secret_access_key)
+  chk::chk_string(region)
 
   year <- year %||% "\\d{4,4}"
   month <- month %||% "\\d{2,2}"
@@ -58,6 +65,9 @@ rwa_get_data <- function(bucket_name,
   file_list <- rwa_list_files(bucket_name,
     pattern = regex_pattern,
     max_request_size = max_request_size,
-    silent = silent
+    silent = silent,
+    aws_access_key_id = aws_access_key_id,
+    aws_secret_access_key = aws_secret_access_key,
+    region = region
   )
 }

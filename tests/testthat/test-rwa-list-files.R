@@ -192,3 +192,43 @@ test_that("Checking message that max size is same as outputed files", {
     regexp = "'Max_request_size' matches retrieved files from AWS. Think about increasing 'Max_request_size' as there could be more files present"
   )
 })
+
+#### Credentials ####
+
+Sys.sleep(5)
+
+test_that("Fails with bad key", {
+  expect_error(
+    rwa_list_files(
+      bucket_name = bucket_name,
+      aws_access_key_id = "fake_key"
+    ),
+    regexp = "InvalidAccessKeyId"
+  )
+})
+
+Sys.sleep(5)
+
+test_that("Fails with bad secret", {
+  expect_error(
+    rwa_list_files(
+      bucket_name = bucket_name,
+      aws_secret_access_key = "fake_secret"
+    ),
+    regexp = "SignatureDoesNotMatch"
+  )
+})
+
+Sys.sleep(5)
+
+test_that("Fails with bad secret", {
+  expect_error(
+    rwa_list_files(
+      bucket_name = bucket_name,
+      region = "fake_place"
+    ),
+    regexp = "Could not resolve host"
+  )
+})
+
+Sys.sleep(5)

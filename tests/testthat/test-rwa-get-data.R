@@ -211,3 +211,43 @@ test_that("error when month is passed as string", {
   regexp = "must be a whole number"
   )
 })
+
+#### Credentials ####
+
+Sys.sleep(5)
+
+test_that("Fails with bad key", {
+  expect_error(
+    rwa_get_data(
+      bucket_name = bucket_name,
+      aws_access_key_id = "fake_key"
+    ),
+    regexp = "InvalidAccessKeyId"
+  )
+})
+
+Sys.sleep(5)
+
+test_that("Fails with bad secret", {
+  expect_error(
+    rwa_get_data(
+      bucket_name = bucket_name,
+      aws_secret_access_key = "fake_secret"
+    ),
+    regexp = "SignatureDoesNotMatch"
+  )
+})
+
+Sys.sleep(5)
+
+test_that("Fails with bad secret", {
+  expect_error(
+    rwa_get_data(
+      bucket_name = bucket_name,
+      region = "fake_place"
+    ),
+    regexp = "Could not resolve host"
+  )
+})
+
+Sys.sleep(5)
