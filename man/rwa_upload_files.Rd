@@ -12,6 +12,8 @@ rwa_upload_files(file_list, directory, bucket_name, bucket_path = "")
 \item{directory}{A string that names the folder you want to save the objects into.}
 
 \item{bucket_name}{A character string of the name of the AWS s3 bucket you are trying to access}
+
+\item{bucket_path}{A character string for adding a different folder to where the files are saved in your bucket. Default it "" which means it saves in the directory given by file_list and directory.}
 }
 \description{
 Upload files from your local drive to an AWS s3 Bucket
