@@ -4,7 +4,13 @@
 \alias{rwa_download_files}
 \title{Download Files from AWS to Local Drive}
 \usage{
-rwa_download_files(file_list, directory, bucket_name, progress = TRUE)
+rwa_download_files(
+  file_list,
+  directory,
+  bucket_name,
+  silent = FALSE,
+  ask = TRUE
+)
 }
 \arguments{
 \item{file_list}{A vector containing a list of files from the object names in AWS}
@@ -13,7 +19,9 @@ rwa_download_files(file_list, directory, bucket_name, progress = TRUE)
 
 \item{bucket_name}{A character string of the name of the AWS s3 bucket you are trying to access}
 
-\item{progress}{A logical flag to turn on and off the progress bar}
+\item{silent}{A logical flag to turn on and off the progress bar}
+
+\item{ask}{A logical flag that turns on and off whether you want to be asked about overwriting files. If set to TRUE you will be asked before proceeding if the directory given is not empty.}
 }
 \description{
 Copies files from your AWS s3 bucket to your local drive

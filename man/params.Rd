@@ -28,7 +28,7 @@
 
 \item{directory}{A string that names the folder you want to save the objects into.}
 
-\item{progress}{A logical flag to turn on and off the progress bar}
+\item{ask}{A logical flag that turns on and off whether you want to be asked about overwriting files. If set to TRUE you will be asked before proceeding if the directory given is not empty.}
 }
 \description{
 Descriptions of the parameters for readwriteaws functions
