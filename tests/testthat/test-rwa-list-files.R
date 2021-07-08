@@ -221,7 +221,7 @@ test_that("Fails with bad secret", {
 
 Sys.sleep(5)
 
-test_that("Fails with bad secret", {
+test_that("Fails with bad region", {
   expect_error(
     rwa_list_files(
       bucket_name = bucket_name,

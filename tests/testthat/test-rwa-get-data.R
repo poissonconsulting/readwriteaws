@@ -240,7 +240,7 @@ test_that("Fails with bad secret", {
 
 Sys.sleep(5)
 
-test_that("Fails with bad secret", {
+test_that("Fails with bad region", {
   expect_error(
     rwa_get_data(
       bucket_name = bucket_name,
