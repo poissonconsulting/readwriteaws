@@ -8,22 +8,35 @@
 rwa_upload_files <- function(file_list,
                              directory = "",
                              bucket_name,
-                             bucket_path = "") {
+                             bucket_path = "",
+                             aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
+                             aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
+                             region = Sys.getenv("AWS_REGION", "ca-central-1")) {
 
   chk::chk_character(file_list)
   chk::chk_string(directory)
   chk::chk_string(bucket_name)
   chk::chk_string(bucket_path)
+  chk::chk_string(aws_access_key_id)
+  chk::chk_string(aws_secret_access_key)
+  chk::chk_string(region)
+
+  s3 <- paws::s3(config = list(
+    credentials = list(creds = list(
+      access_key_id = aws_access_key_id,
+      secret_access_key = aws_secret_access_key
+    )),
+    region = region
+  ))
 
   for (file in file_list) {
 
     local_path <- file.path(directory, file)
     key_path <- file.path(bucket_path, local_path)
 
-    s3_bucket <- paws::s3()
-    s3_bucket$put_object(Body = local_path, ## this is the local file path
-                         Bucket = bucket_name,
-                         Key = key_path) ## where it goes in AWS
+    s3$put_object(Body = local_path, ## this is the local file path
+                  Bucket = bucket_name,
+                  Key = key_path) ## where it goes in AWS
   }
 }
 

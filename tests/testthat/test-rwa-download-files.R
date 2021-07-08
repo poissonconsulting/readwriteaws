@@ -87,3 +87,52 @@ test_that("function should error when fake file provided", {
                                   bucket_name = bucket_name),
                regexp = "HTTP 404")
 })
+
+#### Credentials ####
+
+Sys.sleep(5)
+
+test_that("Fails with bad key", {
+  directory <- withr::local_tempdir()
+  expect_error(
+    rwa_download_files(
+      file_list = file_01,
+      directory = directory,
+      bucket_name = bucket_name,
+      aws_access_key_id = "fake_key"
+    ),
+    regexp = "(HTTP 403)"
+  )
+})
+
+Sys.sleep(5)
+
+test_that("Fails with bad secret", {
+  directory <- withr::local_tempdir()
+  expect_error(
+    rwa_download_files(
+      file_list = file_01,
+      directory = directory,
+      bucket_name = bucket_name,
+      aws_secret_access_key = "fake_secret"
+    ),
+    regexp = "(HTTP 403)"
+  )
+})
+
+Sys.sleep(5)
+
+test_that("Fails with bad region", {
+  directory <- withr::local_tempdir()
+  expect_error(
+    rwa_download_files(
+      file_list = file_01,
+      directory = directory,
+      bucket_name = bucket_name,
+      region = "fake_place"
+    ),
+    regexp = "Could not resolve host"
+  )
+})
+
+Sys.sleep(5)

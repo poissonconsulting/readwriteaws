@@ -189,3 +189,64 @@ test_that("function should error when bucket_path is not a string", {
     regexp = "must be a string"
   )
 })
+
+#### Credentials ####
+
+Sys.sleep(5)
+
+test_that("Fails with bad key", {
+  # set up
+  x <- c(1, 2, 3)
+  temp_folder <- withr::local_tempdir()
+  saveRDS(data.frame(x = 1), file.path(temp_folder, "test.rds"))
+  file_name <- file.path(temp_folder, "test.rds")
+
+  expect_error(
+    rwa_upload_files(
+      file_list = file_name,
+      bucket_name = bucket_name,
+      aws_access_key_id = "fake_key"
+    ),
+    regexp = "InvalidAccessKeyId"
+  )
+})
+
+Sys.sleep(5)
+
+test_that("Fails with bad secret", {
+  # set up
+  x <- c(1, 2, 3)
+  temp_folder <- withr::local_tempdir()
+  saveRDS(data.frame(x = 1), file.path(temp_folder, "test.rds"))
+  file_name <- file.path(temp_folder, "test.rds")
+
+  expect_error(
+    rwa_upload_files(
+      file_list = file_name,
+      bucket_name = bucket_name,
+      aws_secret_access_key = "fake_secret"
+    ),
+    regexp = "SignatureDoesNotMatch"
+  )
+})
+
+Sys.sleep(5)
+
+test_that("Fails with bad region", {
+  # set up
+  x <- c(1, 2, 3)
+  temp_folder <- withr::local_tempdir()
+  saveRDS(data.frame(x = 1), file.path(temp_folder, "test.rds"))
+  file_name <- file.path(temp_folder, "test.rds")
+
+  expect_error(
+    rwa_upload_files(
+      file_list = file_name,
+      bucket_name = bucket_name,
+      region = "fake_place"
+    ),
+    regexp = "Could not resolve host"
+  )
+})
+
+Sys.sleep(5)

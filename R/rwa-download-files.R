@@ -10,7 +10,10 @@ rwa_download_files <- function(file_list,
                                directory,
                                bucket_name,
                                silent = FALSE,
-                               ask = TRUE) {
+                               ask = TRUE,
+                               aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
+                               aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
+                               region = Sys.getenv("AWS_REGION", "ca-central-1")) {
 
   chk::chk_character(file_list)
   chk::chk_dir(directory)
@@ -34,8 +37,12 @@ rwa_download_files <- function(file_list,
       aws.s3::save_object(
         object = file,
         bucket = bucket_name,
-        file = save_location
+        file = save_location,
+        region  = region,
+        key = aws_access_key_id,
+        secret = aws_secret_access_key
       )
     }
   }
+  invisible(NULL)
 }
