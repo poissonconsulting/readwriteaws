@@ -16,3 +16,17 @@ pad_dates <- function(value) {
   }
   value
 }
+
+ask_to_overwrite <- function(directory, ask) {
+  if (!ask) {
+    return(TRUE)
+  }
+
+  files <- list.files(directory)
+
+  if (!length(files)) {
+    return(TRUE)
+  }
+
+  usethis::ui_yeah("The folder is not empty. Files may be overwritten. Proceed?")
+}

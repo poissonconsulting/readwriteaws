@@ -8,28 +8,33 @@
 rwa_download_files <- function(file_list,
                                directory,
                                bucket_name,
-                               progress = TRUE) {
+                               silent = FALSE,
+                               ask = TRUE) {
 
-  chk::chk_vector(file_list)
+  chk::chk_character(file_list)
   chk::chk_dir(directory)
   chk::chk_string(bucket_name)
-  chk::chk_logical(progess)
+  chk::chk_flag(silent)
+  chk::chk_flag(ask)
 
-  if (progress) {
-    pb <- progress::progress_bar$new(total = length(file_list))
-    pb$tick(0)
-  }
+  if(ask_to_overwrite(directory, ask)) {
 
-  for (file in file_list) {
-    if (progress) {
-      pb$tick()
+    if (!silent) {
+      pb <- progress::progress_bar$new(total = length(file_list))
+      pb$tick(0)
     }
 
-    save_location <- paste0(directory, "/", file)
-    aws.s3::save_object(
-      object = file,
-      bucket = bucket_name,
-      file = save_location
-    )
+    for (file in file_list) {
+      if (!silent) {
+        pb$tick()
+      }
+
+      save_location <- paste0(directory, "/", file)
+      aws.s3::save_object(
+        object = file,
+        bucket = bucket_name,
+        file = save_location
+      )
+    }
   }
 }
