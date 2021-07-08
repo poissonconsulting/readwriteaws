@@ -2,6 +2,7 @@
 #'
 #' Copies files from your AWS s3 bucket to your local drive
 #' @inheritParams params
+#' @param silent A logical flag to turn on and off the progress bar
 #'
 #' @export
 #'

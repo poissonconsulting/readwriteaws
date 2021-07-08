@@ -21,5 +21,5 @@
 #'
 #' @param file_list A vector containing a list of files from the object names in AWS
 #' @param directory A string that names the folder you want to save the objects into.
-#' @param progress A logical flag to turn on and off the progress bar
+#' @param ask A logical flag that turns on and off whether you want to be asked about overwriting files. If set to TRUE you will be asked before proceeding if the directory given is not empty.
 NULL
