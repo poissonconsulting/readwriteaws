@@ -6,13 +6,11 @@
 #' @export
 #'
 rwa_upload_files <- function(file_list,
-                             directory,
+                             directory = "",
                              bucket_name,
                              bucket_path = "") {
 
   chk::chk_character(file_list)
-  # chk::chk_dir(directory)
-  ### should it be chk_dir
   chk::chk_string(directory)
   chk::chk_string(bucket_name)
   chk::chk_string(bucket_path)
