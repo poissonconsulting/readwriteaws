@@ -1,17 +1,11 @@
 
 bucket_name <- "readwriteaws-test-poissonconsulting"
-# directory <- tempdir()
 
 file_01 <- "shiny-upload/api_test/demo-1.pdf"
 file_02 <- "shiny-upload/api_test/demo-2.pdf"
 file_03 <- "shiny-upload/api_test/demo-3.pdf"
 
-# file_01_path <- paste0(directory, "/", file_01)
-# file_02_path <- paste0(directory, "/", file_02)
-# file_03_path <- paste0(directory, "/", file_03)
-
 multi_files <- c(file_02, file_03)
-
 
 test_that("save single file to temp directory", {
   directory <- withr::local_tempdir()
@@ -25,15 +19,14 @@ test_that("save single file to temp directory", {
   expect_true(file.exists(file_01_path))
 })
 
-test_that("confirm file_02 doesn't exist yet", {
-  expect_false(file.exists(file_02_path))
-})
-
-test_that("confirm file_03 doesn't exist yet", {
-  expect_false(file.exists(file_03_path))
-})
-
 test_that("save multiple files to temp directory", {
+  directory <- withr::local_tempdir()
+  file_02_path <- paste0(directory, "/", file_02)
+  file_03_path <- paste0(directory, "/", file_03)
+
+  expect_false(file.exists(file_02_path))
+  expect_false(file.exists(file_03_path))
+
   rwa_download_files(file_list = multi_files,
                      directory = directory,
                      bucket_name = bucket_name)
@@ -46,6 +39,7 @@ test_that("save multiple files to temp directory", {
 files_in_list <- list(file_01, file_02)
 
 test_that("function should error if list of files instead of vector given", {
+  directory <- withr::local_tempdir()
   expect_error(rwa_download_files(file_list = files_in_list,
                      directory = directory,
                      bucket_name = bucket_name),
@@ -60,29 +54,36 @@ test_that("function should error when directory is not a string", {
 })
 
 test_that("function should error when bucket is not a string", {
+  directory <- withr::local_tempdir()
   expect_error(rwa_download_files(file_list = multi_files,
                                   directory = directory,
                                   bucket_name = 01),
                regexp = "must be a string")
 })
 
-test_that("function should error when progress is not logical", {
+test_that("function should error when silent is not logical", {
+  directory <- withr::local_tempdir()
   expect_error(rwa_download_files(file_list = multi_files,
                                   directory = directory,
                                   bucket_name = bucket_name,
-                                  progress = "no"),
-               regexp = "must be logical")
+                                  silent = "no"),
+               regexp = "must be a flag")
 })
 
+test_that("function should error when ask is not logical", {
+  directory <- withr::local_tempdir()
+  expect_error(rwa_download_files(file_list = multi_files,
+                                  directory = directory,
+                                  bucket_name = bucket_name,
+                                  ask = "no"),
+               regexp = "must be a flag")
+})
+
+
 test_that("function should error when fake file provided", {
+  directory <- withr::local_tempdir()
   expect_error(rwa_download_files(file_list = "shiny-upload/api_test/demo-1",
                                   directory = directory,
                                   bucket_name = bucket_name),
                regexp = "HTTP 404")
 })
-
-### for creating and destroying temp dir in blocks of code
-### but in suggests
-
-#withr::
-#batchR
