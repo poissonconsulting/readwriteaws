@@ -17,8 +17,44 @@
 #'   The `directory` argument is not included in the file path of the files in
 #'   the bucket.
 #'
-#' @export
+#' @examples
+#' \dontrun{
+#' # Upload a single file to the Purple Lake project
+#' rwa_upload_files(
+#'   file_list = "image/2021-06-30_16-06-10_test_04d855/input_data.csv",
+#'   directory = "shiny-upload",
+#'   bucket_name = "purple-lake-poissonconsulting"
+#' )
 #'
+#' # Upload multiple files to the Purple Lake project
+#' files <- c("image/2021-06-30_16-06-10_test_04d855/uploaded_file.jpeg",
+#'            "image/2021-06-30_16-06-10_test_04d855/input_data.csv")
+#' rwa_upload_files(
+#'   file_list = files,
+#'   directory = "shiny-upload",
+#'   bucket_name = "purple-lake-poissonconsulting"
+#' )
+#'
+#' # Store file in different file path then locally stored
+#' rwa_upload_files(
+#'   file_list = "image/2021-06-30_16-06-10_test_04d855/input_data.csv",
+#'   directory = "shiny-upload",
+#'   bucket_name = "purple-lake-poissonconsulting",
+#'   bucket_path = "extra_data"
+#' )
+#'
+#' # Enter AWS credentials directly into the function
+#' rwa_upload_files(
+#'   file_list = "image/2021-06-30_16-06-10_test_04d855/input_data.csv",
+#'   directory = "shiny-upload",
+#'   bucket_name = "my-project-bucket",
+#'   aws_access_key_id = "AHSGYWKJDIUAHDSJ",
+#'   aws_secret_access_key = "8HYGD54//hgdx^785809",
+#'   region = "us-east-1"
+#' )
+#' }
+#'
+#' @export
 rwa_upload_files <- function(file_list,
                              directory = ".",
                              bucket_name,

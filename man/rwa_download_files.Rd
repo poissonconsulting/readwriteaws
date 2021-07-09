@@ -18,12 +18,13 @@ rwa_download_files(
 \arguments{
 \item{file_list}{A character vector containing a list of files.}
 
-\item{directory}{A string of the directory to copy the files to. The directory must
-already exist.}
+\item{directory}{A string of the directory to copy the files to. The
+directory must already exist.}
 
 \item{bucket_name}{A string of the AWS S3 bucket name.}
 
-\item{silent}{A flag (by default \code{FALSE}) to toggle the progress bar on and off. Set to \code{TRUE} to turn off progress bar.}
+\item{silent}{A flag (by default \code{FALSE}) to toggle the progress bar on and
+off. Set to \code{TRUE} to turn off progress bar.}
 
 \item{ask}{A flag (by default \code{TRUE}) to toggle on and off being asked about
 potentially overwriting files present in the directory argument. Set to
@@ -47,4 +48,50 @@ If the \code{directory} given is empty you will not be prompted about
 potentially overwriting files. You are only asked if the \code{directory} is not
 empty. Use at your own risk as it will overwrite any files with matching
 file paths to the files downloaded from AWS.
+}
+\examples{
+\dontrun{
+# Download a single file
+rwa_download_files(
+  file_list = "shiny-upload/image/2021-06-30_16-06-10_test_04d855/uploaded_file.jpeg",
+  directory = "purple-lake",
+  bucket_name = "purple-lake-poissonconsulting"
+)
+
+# Download multiple files
+files <- c("shiny-upload/image/2021-06-30_16-06-10_test_04d855/uploaded_file.jpeg",
+           "shiny-upload/image/2021-06-30_16-06-10_test_04d855/input_data.csv")
+rwa_download_files(
+  file_list = files,
+  directory = "purple-lake",
+  bucket_name = "purple-lake-poissonconsulting"
+)
+
+# Turn progress bar off when downloading
+rwa_download_files(
+  file_list = "shiny-upload/image/2021-06-30_16-06-10_test_04d855/uploaded_file.jpeg",
+  directory = "purple-lake",
+  bucket_name = "purple-lake-poissonconsulting",
+  silent = TRUE
+)
+
+# Do not ask about potentially overwriting files in the given directory
+rwa_download_files(
+  file_list = "shiny-upload/image/2021-06-30_16-06-10_test_04d855/uploaded_file.jpeg",
+  directory = "purple-lake",
+  bucket_name = "purple-lake-poissonconsulting",
+  ask = FALSE
+)
+
+# Enter AWS credentials directly into the function
+rwa_download_files(
+  file_list = "shiny-upload/image/2021-06-30_16-06-10_test_04d855/uploaded_file.jpeg",
+  directory = "purple-lake",
+  bucket_name = "purple-lake-poissonconsulting",
+  aws_access_key_id = "AHSGYWKJDIUAHDSJ",
+  aws_secret_access_key = "8HYGD54//hgdx^785809",
+  region = "us-east-1"
+)
+
+}
 }
