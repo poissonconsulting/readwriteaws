@@ -163,33 +163,33 @@ test_that("Max request of 1014 gives 1014 files", {
   expect_equal(length(file_list), 1014L)
 })
 
-test_that("Checking message about number of files from AWS", {
+test_that("Checking message about number of files returned", {
   expect_message(
-    rwa_list_files(
-      bucket_name = bucket_name,
-      max_request_size = 2000
-    ),
-    regexp = "1014 files were retrieved from AWS"
-  )
-})
-
-test_that("Checking message about number of files output from pattern", {
-  expect_message(
-    rwa_list_files(
-      bucket_name = bucket_name,
-      max_request_size = 2000
+    expect_message(
+      rwa_list_files(
+        bucket_name = bucket_name,
+        max_request_size = 2000
+      ),
+      regexp = "1014 files were retrieved from AWS"
     ),
     regexp = "1014 files returned after 'pattern'  is applied"
   )
 })
 
+
 test_that("Checking message that max size is same as outputed files", {
-  expect_warning(
-    rwa_list_files(
-      bucket_name = bucket_name,
-      max_request_size = 1014
+  expect_message(
+    expect_message(
+      expect_warning(
+        rwa_list_files(
+          bucket_name = bucket_name,
+          max_request_size = 1014
+        ),
+        regexp = "'Max_request_size' matches retrieved files from AWS. Think about increasing 'Max_request_size' as there could be more files present"
+      ),
+      regexp = "1014 files were retrieved from AWS"
     ),
-    regexp = "'Max_request_size' matches retrieved files from AWS. Think about increasing 'Max_request_size' as there could be more files present"
+    regexp = "1014 files returned after 'pattern'  is applied"
   )
 })
 
