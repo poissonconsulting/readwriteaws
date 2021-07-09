@@ -9,19 +9,19 @@
 #' @examples
 #' \dontrun{
 #' # Getting all the objects related to punch data
-#' rwa_get_data(bucket_name = "my_bucket")
+#' rwa_list_su_files(bucket_name = "my_bucket")
 #'
 #' # Get only punch data from 2021
-#' rwa_get_data(bucket_name = "my_bucket", year = 2021)
+#' rwa_list_su_files(bucket_name = "my_bucket", year = 2021)
 #'
 #' # Get only the csv files
-#' rwa_get_data(bucket_name = "my_bucket", extension = "csv")
+#' rwa_list_su_files(bucket_name = "my_bucket", extension = "csv")
 #'
 #' # Combine to only get excel files submitted in 2021
-#' rwa_get_data(bucket_name = "my_bucket", extension = "xlsx", year = 2021)
+#' rwa_list_su_files(bucket_name = "my_bucket", extension = "xlsx", year = 2021)
 #' }
 #' @export
-rwa_get_data <- function(bucket_name,
+rwa_list_su_files <- function(bucket_name,
                          data_type = NULL,
                          year = NULL,
                          month = NULL,
