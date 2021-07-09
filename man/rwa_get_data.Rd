@@ -13,19 +13,22 @@ rwa_get_data(
   file_name = NULL,
   file_extension = NULL,
   max_request_size = 1000,
-  silent = FALSE
+  silent = FALSE,
+  aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
+  aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
+  region = Sys.getenv("AWS_REGION", "ca-central-1")
 )
 }
 \arguments{
-\item{bucket_name}{A character string of the name of the AWS s3 bucket you are trying to access}
+\item{bucket_name}{A string of the name of the AWS s3 bucket you are trying to access}
 
-\item{data_type}{A character string for which data you want to return. Options currently include punch-data, tracks, logger, image and pdf.}
+\item{data_type}{A string for which data you want to return. Options currently include punch-data, tracks, logger, image and pdf.}
 
-\item{year}{A numeric value for what years you want returned. Format YYYY}
+\item{year}{A whole number for what years you want returned. Format YYYY}
 
-\item{month}{A numeric value for what month you want returned. Format MM}
+\item{month}{A while number for what month you want returned. Format MM}
 
-\item{day}{A numeric value for what day you want returned. Format DD}
+\item{day}{A whole number value for what day you want returned. Format DD}
 
 \item{file_name}{A character string for which file names you want}
 
@@ -33,7 +36,13 @@ rwa_get_data(
 
 \item{max_request_size}{An integer indicating the maximum request size sent to AWS API}
 
-\item{silent}{A logical flag to turn on and off messages about number of files returned}
+\item{silent}{A flag to turn on and off messages about number of files returned}
+
+\item{aws_access_key_id}{Your AWS user access key id that. The default is to use your system environment variable of \code{AWS_ACCESS_KEY_ID}}
+
+\item{aws_secret_access_key}{Your AWS user secret access key that. The default is to use your system environment variable of \code{AWS_SECRET_ACCESS_KEY}}
+
+\item{region}{The region you want to create your resource in. The default is to use your system environment variable of \code{AWS_REGION}}
 }
 \value{
 Vector of object names that match the filter criteria

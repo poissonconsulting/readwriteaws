@@ -25,7 +25,7 @@
 #'
 #' @param bucket_path A character string for adding a different folder to where the files are saved in your bucket. Default it "" which means it saves in the directory given by file_list and directory.
 #'
-#' @param aws_access_key_id
-#' @param aws_secret_access_key
-#' @param region
+#' @param aws_access_key_id Your AWS user access key id that. The default is to use your system environment variable of `AWS_ACCESS_KEY_ID`
+#' @param aws_secret_access_key Your AWS user secret access key that. The default is to use your system environment variable of `AWS_SECRET_ACCESS_KEY`
+#' @param region The region you want to create your resource in. The default is to use your system environment variable of `AWS_REGION`
 NULL

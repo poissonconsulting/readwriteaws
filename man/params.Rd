@@ -4,33 +4,39 @@
 \alias{params}
 \title{Parameters for readwriteaws functions}
 \arguments{
-\item{bucket_name}{A character string of the name of the AWS s3 bucket you are trying to access}
+\item{bucket_name}{A string of the name of the AWS s3 bucket you are trying to access}
 
 \item{pattern}{A character string containing a regular expression to be matched in the given character vector}
 
 \item{max_request_size}{An integer indicating the maximum request size sent to AWS API}
 
-\item{silent}{A logical flag to turn on and off messages about number of files returned}
+\item{silent}{A flag to turn on and off messages about number of files returned}
 
-\item{year}{A numeric value for what years you want returned. Format YYYY}
+\item{year}{A whole number for what years you want returned. Format YYYY}
 
-\item{month}{A numeric value for what month you want returned. Format MM}
+\item{month}{A while number for what month you want returned. Format MM}
 
-\item{day}{A numeric value for what day you want returned. Format DD}
+\item{day}{A whole number value for what day you want returned. Format DD}
 
-\item{data_type}{A character string for which data you want to return. Options currently include punch-data, tracks, logger, image and pdf.}
+\item{data_type}{A string for which data you want to return. Options currently include punch-data, tracks, logger, image and pdf.}
 
 \item{file_extension}{A character string for which file extension you want without the period}
 
 \item{file_name}{A character string for which file names you want}
 
-\item{file_list}{A vector containing a list of files from the object names in AWS}
+\item{file_list}{A character vector containing a list of files from the object names in AWS}
 
 \item{directory}{A string that names the folder you want to save the objects into.}
 
-\item{ask}{A logical flag that turns on and off whether you want to be asked about overwriting files. If set to TRUE you will be asked before proceeding if the directory given is not empty.}
+\item{ask}{A flag that turns on and off whether you want to be asked about overwriting files. If set to TRUE you will be asked before proceeding if the directory given is not empty.}
 
 \item{bucket_path}{A character string for adding a different folder to where the files are saved in your bucket. Default it "" which means it saves in the directory given by file_list and directory.}
+
+\item{aws_access_key_id}{Your AWS user access key id that. The default is to use your system environment variable of \code{AWS_ACCESS_KEY_ID}}
+
+\item{aws_secret_access_key}{Your AWS user secret access key that. The default is to use your system environment variable of \code{AWS_SECRET_ACCESS_KEY}}
+
+\item{region}{The region you want to create your resource in. The default is to use your system environment variable of \code{AWS_REGION}}
 }
 \description{
 Descriptions of the parameters for readwriteaws functions

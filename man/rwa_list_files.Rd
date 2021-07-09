@@ -8,17 +8,26 @@ rwa_list_files(
   bucket_name,
   max_request_size = 1000,
   pattern = ".*",
-  silent = FALSE
+  silent = FALSE,
+  aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
+  aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
+  region = Sys.getenv("AWS_REGION", "ca-central-1")
 )
 }
 \arguments{
-\item{bucket_name}{A character string of the name of the AWS s3 bucket you are trying to access}
+\item{bucket_name}{A string of the name of the AWS s3 bucket you are trying to access}
 
 \item{max_request_size}{An integer indicating the maximum request size sent to AWS API}
 
 \item{pattern}{A character string containing a regular expression to be matched in the given character vector}
 
-\item{silent}{A logical flag to turn on and off messages about number of files returned}
+\item{silent}{A flag to turn on and off messages about number of files returned}
+
+\item{aws_access_key_id}{Your AWS user access key id that. The default is to use your system environment variable of \code{AWS_ACCESS_KEY_ID}}
+
+\item{aws_secret_access_key}{Your AWS user secret access key that. The default is to use your system environment variable of \code{AWS_SECRET_ACCESS_KEY}}
+
+\item{region}{The region you want to create your resource in. The default is to use your system environment variable of \code{AWS_REGION}}
 }
 \description{
 Lists all files from s3 bucket

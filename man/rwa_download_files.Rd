@@ -9,19 +9,28 @@ rwa_download_files(
   directory,
   bucket_name,
   silent = FALSE,
-  ask = TRUE
+  ask = TRUE,
+  aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
+  aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
+  region = Sys.getenv("AWS_REGION", "ca-central-1")
 )
 }
 \arguments{
-\item{file_list}{A vector containing a list of files from the object names in AWS}
+\item{file_list}{A character vector containing a list of files from the object names in AWS}
 
 \item{directory}{A string that names the folder you want to save the objects into.}
 
-\item{bucket_name}{A character string of the name of the AWS s3 bucket you are trying to access}
+\item{bucket_name}{A string of the name of the AWS s3 bucket you are trying to access}
 
 \item{silent}{A logical flag to turn on and off the progress bar}
 
-\item{ask}{A logical flag that turns on and off whether you want to be asked about overwriting files. If set to TRUE you will be asked before proceeding if the directory given is not empty.}
+\item{ask}{A flag that turns on and off whether you want to be asked about overwriting files. If set to TRUE you will be asked before proceeding if the directory given is not empty.}
+
+\item{aws_access_key_id}{Your AWS user access key id that. The default is to use your system environment variable of \code{AWS_ACCESS_KEY_ID}}
+
+\item{aws_secret_access_key}{Your AWS user secret access key that. The default is to use your system environment variable of \code{AWS_SECRET_ACCESS_KEY}}
+
+\item{region}{The region you want to create your resource in. The default is to use your system environment variable of \code{AWS_REGION}}
 }
 \description{
 Copies files from your AWS s3 bucket to your local drive
