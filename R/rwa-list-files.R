@@ -1,33 +1,33 @@
 #' List Files in S3 Bucket
 #'
-#' Lists all files from s3 bucket
+#' Obtain a list of files within an AWS S3 Bucket
+#'
 #' @inheritParams params
+#'
 #' @details The AWS API only allows a max of 1000 objects to return per request.
 #' The `max_request_size` argument is for creating multiple requests to the API
-#' so you are able to get all the files if there are more then 1000 objects
-#' in your bucket. If `max_request_size` is over 1000 it will make multiple
-#' request to AWS until the `max_request_size` is reached.
+#' so you are able to get a list of all the files if there are more then 1000
+#' objects in your bucket. If `max_request_size` is over 1000 it will make
+#' multiple request to AWS until `max_request_size` is reached or all the files
+#' are listed.
 #'
 #' The `pattern` argument is a regex that is applied after all the files are
 #' obtained from AWS. If this argument is given you may get less
 #' then the value given for `max_request_size` as it will only return the
 #' objects that match the pattern.
 #'
+#' Review the messages outputted by the function if you are unsure if you
+#' should increase `max_request size`.
+#'
 #' @examples
 #' \dontrun{
 #' # List all files in the bucket up to a max of 1000
 #' rwa_list_files(bucket_name = "my-project-bucket")
 #'
-#' # Add regex to only list pdfs from June 30th
+#' # Add regex to only list pdfs from June 30, 2020
 #' rwa_list_files(
 #'   bucket_name = "my-project-bucket",
 #'   pattern = "pdf.*2021-06-30"
-#' )
-#'
-#' # Add regex to only list files from 2021
-#' rwa_list_files(
-#'   bucket_name = "my-project-bucket",
-#'   pattern = "2021"
 #' )
 #'
 #' # List all files in the bucket up to a max of 2000
@@ -35,6 +35,21 @@
 #'   bucket_name = "my-project-bucket",
 #'   max_request_size = 2000
 #' )
+#'
+#' # Turn off help messages regarding total number of files returned
+#' rwa_list_files(
+#'   bucket_name = "my-project-bucket",
+#'   silent = TRUE
+#' )
+#'
+#' # Enter AWS credentials directly into the function
+#' #' rwa_list_files(
+#'   bucket_name = "my-project-bucket",
+#'   aws_access_key_id = "AHSGYWKJDIUAHDSJ",
+#'   aws_secret_access_key = "8HYGD54/hgdx^785809",
+#'   region = "us-east-1"
+#' )
+#'
 #' }
 #' @export
 rwa_list_files <- function(bucket_name,
