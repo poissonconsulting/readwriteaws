@@ -14,7 +14,7 @@ rwa_upload_files <- function(file_list,
                              region = Sys.getenv("AWS_REGION", "ca-central-1")) {
 
   chk::chk_character(file_list)
-  chk::chk_dir(directory)
+  chk::chk_null_or(directory, chk::chk_dir)
   chk::chk_string(bucket_name)
   chk::chk_string(bucket_path)
   chk::chk_string(aws_access_key_id)
@@ -31,7 +31,7 @@ rwa_upload_files <- function(file_list,
 
   for (file in file_list) {
 
-    local_path <- file.path(directory, file)
+    local_path <- paste0(directory, "/", file)
     key_path <- file.path(bucket_path, file)
 
     s3$put_object(Body = local_path, ## this is the local file path

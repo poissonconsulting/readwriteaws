@@ -20,7 +20,7 @@ test_that("put single file in a bucket", {
   # upload files to AWS
   rwa_upload_files(
     file_list = file_name,
-    directory = "",
+    directory = NULL,
     bucket_name = bucket_name,
     bucket_path = ""
   )
@@ -84,7 +84,7 @@ test_that("put multiple files in a bucket", {
   # upload files to AWS
   rwa_upload_files(
     file_list = multi_files,
-    directory = "",
+    directory = NULL,
     bucket_name = bucket_name,
     bucket_path = ""
   )
@@ -171,7 +171,6 @@ test_that("function should error when bucket is not a string", {
   expect_error(
     rwa_upload_files(
       file_list = "functions.R",
-      directory = "R",
       bucket_name = 01
     ),
     regexp = "must be a string"
@@ -182,7 +181,6 @@ test_that("function should error when bucket_path is not a string", {
   expect_error(
     rwa_upload_files(
       file_list = "functions.R",
-      directory = "R",
       bucket_name = bucket_name,
       bucket_path = 01
     ),
@@ -204,6 +202,7 @@ test_that("Fails with bad key", {
   expect_error(
     rwa_upload_files(
       file_list = file_name,
+      directory = NULL,
       bucket_name = bucket_name,
       aws_access_key_id = "fake_key"
     ),
@@ -223,6 +222,7 @@ test_that("Fails with bad secret", {
   expect_error(
     rwa_upload_files(
       file_list = file_name,
+      directory = NULL,
       bucket_name = bucket_name,
       aws_secret_access_key = "fake_secret"
     ),
@@ -242,6 +242,7 @@ test_that("Fails with bad region", {
   expect_error(
     rwa_upload_files(
       file_list = file_name,
+      directory = NULL,
       bucket_name = bucket_name,
       region = "fake_place"
     ),
