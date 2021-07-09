@@ -1,8 +1,15 @@
-#' Download Files from AWS to Local Drive
+#' Download Files from AWS S3 to Local Drive
 #'
-#' Copies files from your AWS s3 bucket to your local drive
+#' Copies files from your AWS S3 bucket to a local drive
 #' @inheritParams params
-#' @param silent A logical flag to turn on and off the progress bar
+#' @param silent A flag (by default `FALSE`) to toggle the progress bar on and off. Set to `TRUE` to turn off progress bar.
+#' @param directory A string of the directory to copy the files to. The directory must
+#' already exist.
+#'
+#' @details If the `directory` given is empty you will not be prompted about
+#' potentially overwriting files. You are only asked if the `directory` is not
+#' empty. Use at your own risk as it will overwrite any files with matching
+#' file paths to the files downloaded from AWS.
 #'
 #' @export
 #'

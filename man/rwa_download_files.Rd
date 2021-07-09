@@ -2,7 +2,7 @@
 % Please edit documentation in R/rwa-download-files.R
 \name{rwa_download_files}
 \alias{rwa_download_files}
-\title{Download Files from AWS to Local Drive}
+\title{Download Files from AWS S3 to Local Drive}
 \usage{
 rwa_download_files(
   file_list,
@@ -16,22 +16,35 @@ rwa_download_files(
 )
 }
 \arguments{
-\item{file_list}{A character vector containing a list of files from the object names in AWS}
+\item{file_list}{A character vector containing a list of files.}
 
-\item{directory}{A string that names the folder you want to save the objects into.}
+\item{directory}{A string of the directory to copy the files to. The directory must
+already exist.}
 
-\item{bucket_name}{A string of the name of the AWS s3 bucket you are trying to access}
+\item{bucket_name}{A string of the AWS S3 bucket name.}
 
-\item{silent}{A logical flag to turn on and off the progress bar}
+\item{silent}{A flag (by default \code{FALSE}) to toggle the progress bar on and off. Set to \code{TRUE} to turn off progress bar.}
 
-\item{ask}{A flag that turns on and off whether you want to be asked about overwriting files. If set to TRUE you will be asked before proceeding if the directory given is not empty.}
+\item{ask}{A flag (by default \code{TRUE}) to toggle on and off being asked about
+potentially overwriting files present in the directory argument. Set to
+\code{FALSE} to not be asked.}
 
-\item{aws_access_key_id}{Your AWS user access key id that. The default is to use your system environment variable of \code{AWS_ACCESS_KEY_ID}}
+\item{aws_access_key_id}{A string of your AWS user access key id from AWS.
+The default is the system environment variable of \code{AWS_ACCESS_KEY_ID}.}
 
-\item{aws_secret_access_key}{Your AWS user secret access key that. The default is to use your system environment variable of \code{AWS_SECRET_ACCESS_KEY}}
+\item{aws_secret_access_key}{A string of your AWS user secret access key from
+AWS. The default is the system environment variable of
+\code{AWS_SECRET_ACCESS_KEY}.}
 
-\item{region}{The region you want to create your resource in. The default is to use your system environment variable of \code{AWS_REGION}}
+\item{region}{A string of the AWS region you are working within. The default
+is the system environment variable of \code{AWS_REGION}}
 }
 \description{
-Copies files from your AWS s3 bucket to your local drive
+Copies files from your AWS S3 bucket to a local drive
+}
+\details{
+If the \code{directory} given is empty you will not be prompted about
+potentially overwriting files. You are only asked if the \code{directory} is not
+empty. Use at your own risk as it will overwrite any files with matching
+file paths to the files downloaded from AWS.
 }

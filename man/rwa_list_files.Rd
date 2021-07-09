@@ -15,50 +15,57 @@ rwa_list_files(
 )
 }
 \arguments{
-\item{bucket_name}{A string of the name of the AWS s3 bucket you are trying to access}
+\item{bucket_name}{A string of the AWS S3 bucket name.}
 
-\item{max_request_size}{An integer indicating the maximum request size sent to AWS API}
+\item{max_request_size}{A whole number (by default \code{1000}) indicating the
+maximum number of files to be returned.}
 
-\item{pattern}{A character string containing a regular expression to be matched in the given character vector}
+\item{pattern}{A string containing a regular expression.}
 
-\item{silent}{A flag to turn on and off messages about number of files returned}
+\item{silent}{A flag (by default \code{FALSE}) to toggle messages about number of
+files returned on and off. Set to \code{TRUE} to silence messages.}
 
-\item{aws_access_key_id}{Your AWS user access key id that. The default is to use your system environment variable of \code{AWS_ACCESS_KEY_ID}}
+\item{aws_access_key_id}{A string of your AWS user access key id from AWS.
+The default is the system environment variable of \code{AWS_ACCESS_KEY_ID}.}
 
-\item{aws_secret_access_key}{Your AWS user secret access key that. The default is to use your system environment variable of \code{AWS_SECRET_ACCESS_KEY}}
+\item{aws_secret_access_key}{A string of your AWS user secret access key from
+AWS. The default is the system environment variable of
+\code{AWS_SECRET_ACCESS_KEY}.}
 
-\item{region}{The region you want to create your resource in. The default is to use your system environment variable of \code{AWS_REGION}}
+\item{region}{A string of the AWS region you are working within. The default
+is the system environment variable of \code{AWS_REGION}}
+}
+\value{
+Vector of object names that match the filter criteria
 }
 \description{
-Lists all files from s3 bucket
+Obtain a list of files within an AWS S3 Bucket
 }
 \details{
 The AWS API only allows a max of 1000 objects to return per request.
-The \code{max_request_size} argument is for creating multiple requests to the API
-so you are able to get all the files if there are more then 1000 objects
-in your bucket. If \code{max_request_size} is over 1000 it will make multiple
-request to AWS until the \code{max_request_size} is reached.
+The \code{max_request_size} argument is for creating multiple requests to the
+API so you are able to get a list of all the files if there are more then
+1000 objects in your bucket. If \code{max_request_size} is over 1000 it will
+make multiple request to AWS until \code{max_request_size} is reached or all the
+files are listed.
 
 The \code{pattern} argument is a regex that is applied after all the files are
-obtained from AWS. If this argument is given you may get less
-then the value given for \code{max_request_size} as it will only return the
-objects that match the pattern.
+obtained from AWS. If this argument is given you may get less then the
+value given for \code{max_request_size} as it will only return the objects that
+match the pattern.
+
+Review the messages outputted by the function if you are unsure if you
+should increase \verb{max_request size}.
 }
 \examples{
 \dontrun{
 # List all files in the bucket up to a max of 1000
 rwa_list_files(bucket_name = "my-project-bucket")
 
-# Add regex to only list pdfs from June 30th
+# Add regex to only list pdfs from June 30, 2020
 rwa_list_files(
   bucket_name = "my-project-bucket",
   pattern = "pdf.*2021-06-30"
-)
-
-# Add regex to only list files from 2021
-rwa_list_files(
-  bucket_name = "my-project-bucket",
-  pattern = "2021"
 )
 
 # List all files in the bucket up to a max of 2000
@@ -66,5 +73,20 @@ rwa_list_files(
   bucket_name = "my-project-bucket",
   max_request_size = 2000
 )
+
+# Turn off help messages regarding total number of files returned
+rwa_list_files(
+  bucket_name = "my-project-bucket",
+  silent = TRUE
+)
+
+# Enter AWS credentials directly into the function
+rwa_list_files(
+  bucket_name = "my-project-bucket",
+  aws_access_key_id = "AHSGYWKJDIUAHDSJ",
+  aws_secret_access_key = "8HYGD54//hgdx^785809",
+  region = "us-east-1"
+)
+
 }
 }

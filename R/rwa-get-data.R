@@ -1,6 +1,7 @@
-#' List Punch Data Files from s3 Bucket
+#' List Data files in a S3 Bucket
 #'
-#' Lists only punch data files
+#' Wrapper function to `rwa_list_files` built to make it easy for accessing
+#' uploaded files from Shiny apps.
 #' @inheritParams params
 #'
 #' @return Vector of object names that match the filter criteria

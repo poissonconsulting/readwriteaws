@@ -15,20 +15,41 @@ rwa_upload_files(
 )
 }
 \arguments{
-\item{file_list}{A character vector containing a list of files from the object names in AWS}
+\item{file_list}{A character vector containing a list of files.}
 
-\item{directory}{A string that names the folder you want to save the objects into.}
+\item{directory}{A string (by default \code{"."}) indicating the directory where
+the files are locally located.}
 
-\item{bucket_name}{A string of the name of the AWS s3 bucket you are trying to access}
+\item{bucket_name}{A string of the AWS S3 bucket name.}
 
-\item{bucket_path}{A character string for adding a different folder to where the files are saved in your bucket. Default it "" which means it saves in the directory given by file_list and directory.}
+\item{bucket_path}{A string (by default \code{""}) to prefix the file path in the
+bucket. This allows you to place files in a different folder in the bucket
+then locally. If the default is used the file structure will be identical
+to the \code{file_list} passed.}
 
-\item{aws_access_key_id}{Your AWS user access key id that. The default is to use your system environment variable of \code{AWS_ACCESS_KEY_ID}}
+\item{aws_access_key_id}{A string of your AWS user access key id from AWS.
+The default is the system environment variable of \code{AWS_ACCESS_KEY_ID}.}
 
-\item{aws_secret_access_key}{Your AWS user secret access key that. The default is to use your system environment variable of \code{AWS_SECRET_ACCESS_KEY}}
+\item{aws_secret_access_key}{A string of your AWS user secret access key from
+AWS. The default is the system environment variable of
+\code{AWS_SECRET_ACCESS_KEY}.}
 
-\item{region}{The region you want to create your resource in. The default is to use your system environment variable of \code{AWS_REGION}}
+\item{region}{A string of the AWS region you are working within. The default
+is the system environment variable of \code{AWS_REGION}}
 }
 \description{
-Upload files from your local drive to an AWS s3 Bucket
+Upload files from your local drive to an AWS S3 bucket
+}
+\details{
+The directory argument can take either relative or absolute file
+paths. The directory and \code{file_list} argument are designed to be used
+together. The \code{file_list} argument can be used without the directory
+argument if required.
+
+The \code{bucket_path} argument makes it possible to place files in a different
+folder path in the bucket then locally. The \code{bucket_path} argument is
+appended to the \code{file_list}.
+
+The \code{directory} argument is not included in the file path of the files in
+the bucket.
 }

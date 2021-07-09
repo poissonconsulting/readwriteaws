@@ -2,7 +2,7 @@
 % Please edit documentation in R/rwa-get-data.R
 \name{rwa_get_data}
 \alias{rwa_get_data}
-\title{List Punch Data Files from s3 Bucket}
+\title{List Data files in a S3 Bucket}
 \usage{
 rwa_get_data(
   bucket_name,
@@ -20,35 +20,48 @@ rwa_get_data(
 )
 }
 \arguments{
-\item{bucket_name}{A string of the name of the AWS s3 bucket you are trying to access}
+\item{bucket_name}{A string of the AWS S3 bucket name.}
 
-\item{data_type}{A string for which data you want to return. Options currently include punch-data, tracks, logger, image and pdf.}
+\item{data_type}{A string (by default \code{NULL}) for which data type to return.
+Options currently include punch-data, tracks, logger, image and pdf.}
 
-\item{year}{A whole number for what years you want returned. Format YYYY}
+\item{year}{A whole number (by default \code{NULL}) indicating which year is
+returned. Format YYYY.}
 
-\item{month}{A while number for what month you want returned. Format MM}
+\item{month}{A whole number (by default \code{NULL}) indicating which month is
+returned. Format MM.}
 
-\item{day}{A whole number value for what day you want returned. Format DD}
+\item{day}{A whole number (by default \code{NULL}) indicating which day is
+returned. Format DD.}
 
-\item{file_name}{A character string for which file names you want}
+\item{file_name}{A string (by default \code{NULL}) containing the name of the file
+to be returned. Do not include extension type.}
 
-\item{file_extension}{A character string for which file extension you want without the period}
+\item{file_extension}{A string (by default \code{NULL}) for which file extension
+to return. Do not include period in front of extension.}
 
-\item{max_request_size}{An integer indicating the maximum request size sent to AWS API}
+\item{max_request_size}{A whole number (by default \code{1000}) indicating the
+maximum number of files to be returned.}
 
-\item{silent}{A flag to turn on and off messages about number of files returned}
+\item{silent}{A flag (by default \code{FALSE}) to toggle messages about number of
+files returned on and off. Set to \code{TRUE} to silence messages.}
 
-\item{aws_access_key_id}{Your AWS user access key id that. The default is to use your system environment variable of \code{AWS_ACCESS_KEY_ID}}
+\item{aws_access_key_id}{A string of your AWS user access key id from AWS.
+The default is the system environment variable of \code{AWS_ACCESS_KEY_ID}.}
 
-\item{aws_secret_access_key}{Your AWS user secret access key that. The default is to use your system environment variable of \code{AWS_SECRET_ACCESS_KEY}}
+\item{aws_secret_access_key}{A string of your AWS user secret access key from
+AWS. The default is the system environment variable of
+\code{AWS_SECRET_ACCESS_KEY}.}
 
-\item{region}{The region you want to create your resource in. The default is to use your system environment variable of \code{AWS_REGION}}
+\item{region}{A string of the AWS region you are working within. The default
+is the system environment variable of \code{AWS_REGION}}
 }
 \value{
 Vector of object names that match the filter criteria
 }
 \description{
-Lists only punch data files
+Wrapper function to \code{rwa_list_files} built to make it easy for accessing
+uploaded files from Shiny apps.
 }
 \examples{
 \dontrun{

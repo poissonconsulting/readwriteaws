@@ -4,6 +4,8 @@
 #'
 #' @inheritParams params
 #'
+#' @return Vector of object names that match the filter criteria
+#'
 #' @details The AWS API only allows a max of 1000 objects to return per request.
 #'   The `max_request_size` argument is for creating multiple requests to the
 #'   API so you are able to get a list of all the files if there are more then
@@ -43,10 +45,10 @@
 #' )
 #'
 #' # Enter AWS credentials directly into the function
-#' #' rwa_list_files(
+#' rwa_list_files(
 #'   bucket_name = "my-project-bucket",
 #'   aws_access_key_id = "AHSGYWKJDIUAHDSJ",
-#'   aws_secret_access_key = "8HYGD54/hgdx^785809",
+#'   aws_secret_access_key = "8HYGD54//hgdx^785809",
 #'   region = "us-east-1"
 #' )
 #'

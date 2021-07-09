@@ -4,39 +4,54 @@
 \alias{params}
 \title{Parameters for readwriteaws functions}
 \arguments{
-\item{bucket_name}{A string of the name of the AWS s3 bucket you are trying to access}
+\item{bucket_name}{A string of the AWS S3 bucket name.}
 
-\item{pattern}{A character string containing a regular expression to be matched in the given character vector}
+\item{pattern}{A string containing a regular expression.}
 
-\item{max_request_size}{An integer indicating the maximum request size sent to AWS API}
+\item{max_request_size}{A whole number (by default \code{1000}) indicating the
+maximum number of files to be returned.}
 
-\item{silent}{A flag to turn on and off messages about number of files returned}
+\item{silent}{A flag (by default \code{FALSE}) to toggle messages about number of
+files returned on and off. Set to \code{TRUE} to silence messages.}
 
-\item{year}{A whole number for what years you want returned. Format YYYY}
+\item{data_type}{A string (by default \code{NULL}) for which data type to return.
+Options currently include punch-data, tracks, logger, image and pdf.}
 
-\item{month}{A while number for what month you want returned. Format MM}
+\item{year}{A whole number (by default \code{NULL}) indicating which year is
+returned. Format YYYY.}
 
-\item{day}{A whole number value for what day you want returned. Format DD}
+\item{month}{A whole number (by default \code{NULL}) indicating which month is
+returned. Format MM.}
 
-\item{data_type}{A string for which data you want to return. Options currently include punch-data, tracks, logger, image and pdf.}
+\item{day}{A whole number (by default \code{NULL}) indicating which day is
+returned. Format DD.}
 
-\item{file_extension}{A character string for which file extension you want without the period}
+\item{file_name}{A string (by default \code{NULL}) containing the name of the file
+to be returned. Do not include extension type.}
 
-\item{file_name}{A character string for which file names you want}
+\item{file_extension}{A string (by default \code{NULL}) for which file extension
+to return. Do not include period in front of extension.}
 
-\item{file_list}{A character vector containing a list of files from the object names in AWS}
+\item{file_list}{A character vector containing a list of files.}
 
-\item{directory}{A string that names the folder you want to save the objects into.}
+\item{ask}{A flag (by default \code{TRUE}) to toggle on and off being asked about
+potentially overwriting files present in the directory argument. Set to
+\code{FALSE} to not be asked.}
 
-\item{ask}{A flag that turns on and off whether you want to be asked about overwriting files. If set to TRUE you will be asked before proceeding if the directory given is not empty.}
+\item{bucket_path}{A string (by default \code{""}) to prefix the file path in the
+bucket. This allows you to place files in a different folder in the bucket
+then locally. If the default is used the file structure will be identical
+to the \code{file_list} passed.}
 
-\item{bucket_path}{A character string for adding a different folder to where the files are saved in your bucket. Default it "" which means it saves in the directory given by file_list and directory.}
+\item{aws_access_key_id}{A string of your AWS user access key id from AWS.
+The default is the system environment variable of \code{AWS_ACCESS_KEY_ID}.}
 
-\item{aws_access_key_id}{Your AWS user access key id that. The default is to use your system environment variable of \code{AWS_ACCESS_KEY_ID}}
+\item{aws_secret_access_key}{A string of your AWS user secret access key from
+AWS. The default is the system environment variable of
+\code{AWS_SECRET_ACCESS_KEY}.}
 
-\item{aws_secret_access_key}{Your AWS user secret access key that. The default is to use your system environment variable of \code{AWS_SECRET_ACCESS_KEY}}
-
-\item{region}{The region you want to create your resource in. The default is to use your system environment variable of \code{AWS_REGION}}
+\item{region}{A string of the AWS region you are working within. The default
+is the system environment variable of \code{AWS_REGION}}
 }
 \description{
 Descriptions of the parameters for readwriteaws functions
