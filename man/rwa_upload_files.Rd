@@ -6,7 +6,7 @@
 \usage{
 rwa_upload_files(
   file_list,
-  directory = "",
+  directory = ".",
   bucket_name,
   bucket_path = "",
   aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
