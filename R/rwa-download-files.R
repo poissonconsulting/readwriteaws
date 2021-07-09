@@ -97,5 +97,4 @@ rwa_download_files <- function(file_list,
       )
     }
   }
-  invisible(NULL)
 }
