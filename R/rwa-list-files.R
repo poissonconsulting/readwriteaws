@@ -44,6 +44,7 @@ rwa_list_files <- function(bucket_name,
                            aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
                            aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
                            region = Sys.getenv("AWS_REGION", "ca-central-1")) {
+
   chk::chk_string(bucket_name)
   chk::chk_whole_number(max_request_size)
   chk::chk_gt(max_request_size, value = 0)
