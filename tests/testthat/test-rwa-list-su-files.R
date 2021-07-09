@@ -194,7 +194,7 @@ test_that("get 1 files - file extension gpx", {
 test_that("get 3 files - tracks and day given as 2 digits", {
   file_list <- rwa_list_su_files(
     bucket_name = bucket_name,
-    data_type =  "tracks",
+    data_type = "tracks",
     day = 01,
     max_request_size = 2000,
     silent = TRUE
@@ -205,7 +205,7 @@ test_that("get 3 files - tracks and day given as 2 digits", {
 test_that("get 3 files - tracks and day given as 1 digit", {
   file_list <- rwa_list_su_files(
     bucket_name = bucket_name,
-    data_type =  "tracks",
+    data_type = "tracks",
     day = 1,
     max_request_size = 2000,
     silent = TRUE

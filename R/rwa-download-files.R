@@ -22,8 +22,10 @@
 #' )
 #'
 #' # Download multiple files
-#' files <- c("shiny-upload/image/2021-06-30_16-06-10_test_04d855/uploaded_file.jpeg",
-#'            "shiny-upload/image/2021-06-30_16-06-10_test_04d855/input_data.csv")
+#' files <- c(
+#'   "shiny-upload/image/2021-06-30_16-06-10_test_04d855/uploaded_file.jpeg",
+#'   "shiny-upload/image/2021-06-30_16-06-10_test_04d855/input_data.csv"
+#' )
 #' rwa_download_files(
 #'   file_list = files,
 #'   directory = "purple-lake",
@@ -55,7 +57,6 @@
 #'   aws_secret_access_key = "8HYGD54//hgdx^785809",
 #'   region = "us-east-1"
 #' )
-#'
 #' }
 #' @export
 #'
@@ -67,15 +68,13 @@ rwa_download_files <- function(file_list,
                                aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
                                aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
                                region = Sys.getenv("AWS_REGION", "ca-central-1")) {
-
   chk::chk_character(file_list)
   chk::chk_dir(directory)
   chk::chk_string(bucket_name)
   chk::chk_flag(silent)
   chk::chk_flag(ask)
 
-  if(ask_to_overwrite(directory, ask)) {
-
+  if (ask_to_overwrite(directory, ask)) {
     if (!silent) {
       pb <- progress::progress_bar$new(total = length(file_list))
       pb$tick(0)
@@ -91,7 +90,7 @@ rwa_download_files <- function(file_list,
         object = file,
         bucket = bucket_name,
         file = save_location,
-        region  = region,
+        region = region,
         key = aws_access_key_id,
         secret = aws_secret_access_key
       )

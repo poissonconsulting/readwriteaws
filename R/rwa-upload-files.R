@@ -27,8 +27,10 @@
 #' )
 #'
 #' # Upload multiple files to the Purple Lake project
-#' files <- c("image/2021-06-30_16-06-10_test_04d855/uploaded_file.jpeg",
-#'            "image/2021-06-30_16-06-10_test_04d855/input_data.csv")
+#' files <- c(
+#'   "image/2021-06-30_16-06-10_test_04d855/uploaded_file.jpeg",
+#'   "image/2021-06-30_16-06-10_test_04d855/input_data.csv"
+#' )
 #' rwa_upload_files(
 #'   file_list = files,
 #'   directory = "shiny-upload",
@@ -62,7 +64,6 @@ rwa_upload_files <- function(file_list,
                              aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
                              aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
                              region = Sys.getenv("AWS_REGION", "ca-central-1")) {
-
   chk::chk_character(file_list)
   chk::chk_null_or(directory, chk::chk_dir)
   chk::chk_string(bucket_name)
@@ -80,13 +81,13 @@ rwa_upload_files <- function(file_list,
   ))
 
   for (file in file_list) {
-
     local_path <- paste0(directory, "/", file)
     key_path <- file.path(bucket_path, file)
 
-    s3$put_object(Body = local_path, ## this is the local file path
-                  Bucket = bucket_name,
-                  Key = key_path) ## where it goes in AWS
+    s3$put_object(
+      Body = local_path, ## this is the local file path
+      Bucket = bucket_name,
+      Key = key_path ## where it goes in AWS
+    )
   }
 }
-

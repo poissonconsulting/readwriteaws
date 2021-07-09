@@ -22,18 +22,17 @@
 #' }
 #' @export
 rwa_list_su_files <- function(bucket_name,
-                         data_type = NULL,
-                         year = NULL,
-                         month = NULL,
-                         day = NULL,
-                         file_name = NULL,
-                         file_extension = NULL,
-                         max_request_size = 1000,
-                         silent = FALSE,
-                         aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
-                         aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
-                         region = Sys.getenv("AWS_REGION", "ca-central-1")) {
-
+                              data_type = NULL,
+                              year = NULL,
+                              month = NULL,
+                              day = NULL,
+                              file_name = NULL,
+                              file_extension = NULL,
+                              max_request_size = 1000,
+                              silent = FALSE,
+                              aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
+                              aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
+                              region = Sys.getenv("AWS_REGION", "ca-central-1")) {
   chk::chk_null_or(data_type, chk::chk_string)
   chk::chk_null_or(year, chk::chk_whole_number)
   chk::chk_range(year, range = c(1900, 2100))
