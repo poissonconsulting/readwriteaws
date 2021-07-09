@@ -107,6 +107,18 @@ test_that("get 2 files - pdf and year, month", {
   expect_equal(length(file_list), 2L)
 })
 
+test_that("get 2 files - pdf and year, month when month passed as single digit", {
+  file_list <- rwa_get_data(
+    bucket_name = bucket_name,
+    data_type = "pdf",
+    year = 2021,
+    month = 6,
+    max_request_size = 2000,
+    silent = TRUE
+  )
+  expect_equal(length(file_list), 2L)
+})
+
 test_that("get 5 files - year & month", {
   file_list <- rwa_get_data(
     bucket_name = bucket_name,
@@ -177,6 +189,28 @@ test_that("get 1 files - file extension gpx", {
     silent = TRUE
   )
   expect_equal(length(file_list), 1L)
+})
+
+test_that("get 3 files - tracks and day given as 2 digits", {
+  file_list <- rwa_get_data(
+    bucket_name = bucket_name,
+    data_type =  "tracks",
+    day = 01,
+    max_request_size = 2000,
+    silent = TRUE
+  )
+  expect_equal(length(file_list), 3L)
+})
+
+test_that("get 3 files - tracks and day given as 1 digit", {
+  file_list <- rwa_get_data(
+    bucket_name = bucket_name,
+    data_type =  "tracks",
+    day = 1,
+    max_request_size = 2000,
+    silent = TRUE
+  )
+  expect_equal(length(file_list), 3L)
 })
 
 test_that("error when year is passed as string", {
