@@ -2,7 +2,7 @@
 % Please edit documentation in R/rwa-upload-files.R
 \name{rwa_upload_files}
 \alias{rwa_upload_files}
-\title{Upload Files from your Local Drive to AWS}
+\title{Upload Files from a Local Drive to an AWS S3 Bucket}
 \usage{
 rwa_upload_files(
   file_list,
@@ -27,15 +27,15 @@ bucket. This allows you to place files in a different folder in the bucket
 then locally. If the default is used the file structure will be identical
 to the \code{file_list} passed.}
 
-\item{aws_access_key_id}{A string of your AWS user access key id from AWS.
-The default is the system environment variable of \code{AWS_ACCESS_KEY_ID}.}
+\item{aws_access_key_id}{A string of your AWS user access key ID from AWS.
+The default is the environment variable called \code{AWS_ACCESS_KEY_ID}.}
 
 \item{aws_secret_access_key}{A string of your AWS user secret access key from
-AWS. The default is the system environment variable of
+AWS. The default is the environment variable called
 \code{AWS_SECRET_ACCESS_KEY}.}
 
-\item{region}{A string of the AWS region you are working within. The default
-is the system environment variable of \code{AWS_REGION}}
+\item{region}{A string of the AWS region. The default is the environment
+variable called \code{AWS_REGION}.}
 }
 \description{
 Upload files from your local drive to an AWS S3 bucket
@@ -63,8 +63,10 @@ rwa_upload_files(
 )
 
 # Upload multiple files to the Purple Lake project
-files <- c("image/2021-06-30_16-06-10_test_04d855/uploaded_file.jpeg",
-           "image/2021-06-30_16-06-10_test_04d855/input_data.csv")
+files <- c(
+  "image/2021-06-30_16-06-10_test_04d855/uploaded_file.jpeg",
+  "image/2021-06-30_16-06-10_test_04d855/input_data.csv"
+)
 rwa_upload_files(
   file_list = files,
   directory = "shiny-upload",

@@ -1,4 +1,4 @@
-#' Download Files from AWS S3 to Local Drive
+#' Download Files from an AWS S3 Bucket to a Local Drive
 #'
 #' Copies files from your AWS S3 bucket to a local drive
 #' @inheritParams params

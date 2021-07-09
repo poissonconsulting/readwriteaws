@@ -172,7 +172,7 @@ test_that("Checking message about number of files returned", {
       ),
       regexp = "1014 files were retrieved from AWS"
     ),
-    regexp = "1014 files returned after 'pattern'  is applied"
+    regexp = "1014 files returned after 'pattern' is applied"
   )
 })
 
@@ -185,11 +185,13 @@ test_that("Checking message that max size is same as outputed files", {
           bucket_name = bucket_name,
           max_request_size = 1014
         ),
-        regexp = "'Max_request_size' matches retrieved files from AWS. Think about increasing 'Max_request_size' as there could be more files present"
+        regexp = paste("'Max_request_size' matches retrieved files from AWS.",
+                       "Think about increasing 'Max_request_size' as there",
+                       "could be more files present")
       ),
       regexp = "1014 files were retrieved from AWS"
     ),
-    regexp = "1014 files returned after 'pattern'  is applied"
+    regexp = "1014 files returned after 'pattern' is applied"
   )
 })
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/rwa-download-files.R
 \name{rwa_download_files}
 \alias{rwa_download_files}
-\title{Download Files from AWS S3 to Local Drive}
+\title{Download Files from an AWS S3 Bucket to a Local Drive}
 \usage{
 rwa_download_files(
   file_list,
@@ -30,15 +30,15 @@ off. Set to \code{TRUE} to turn off progress bar.}
 potentially overwriting files present in the directory argument. Set to
 \code{FALSE} to not be asked.}
 
-\item{aws_access_key_id}{A string of your AWS user access key id from AWS.
-The default is the system environment variable of \code{AWS_ACCESS_KEY_ID}.}
+\item{aws_access_key_id}{A string of your AWS user access key ID from AWS.
+The default is the environment variable called \code{AWS_ACCESS_KEY_ID}.}
 
 \item{aws_secret_access_key}{A string of your AWS user secret access key from
-AWS. The default is the system environment variable of
+AWS. The default is the environment variable called
 \code{AWS_SECRET_ACCESS_KEY}.}
 
-\item{region}{A string of the AWS region you are working within. The default
-is the system environment variable of \code{AWS_REGION}}
+\item{region}{A string of the AWS region. The default is the environment
+variable called \code{AWS_REGION}.}
 }
 \description{
 Copies files from your AWS S3 bucket to a local drive
@@ -59,8 +59,10 @@ rwa_download_files(
 )
 
 # Download multiple files
-files <- c("shiny-upload/image/2021-06-30_16-06-10_test_04d855/uploaded_file.jpeg",
-           "shiny-upload/image/2021-06-30_16-06-10_test_04d855/input_data.csv")
+files <- c(
+  "shiny-upload/image/2021-06-30_16-06-10_test_04d855/uploaded_file.jpeg",
+  "shiny-upload/image/2021-06-30_16-06-10_test_04d855/input_data.csv"
+)
 rwa_download_files(
   file_list = files,
   directory = "purple-lake",
@@ -92,6 +94,5 @@ rwa_download_files(
   aws_secret_access_key = "8HYGD54//hgdx^785809",
   region = "us-east-1"
 )
-
 }
 }

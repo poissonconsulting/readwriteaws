@@ -2,7 +2,7 @@
 % Please edit documentation in R/rwa-list-su-files.R
 \name{rwa_list_su_files}
 \alias{rwa_list_su_files}
-\title{List Data files in a S3 Bucket}
+\title{List Shiny Upload Files in an AWS S3 Bucket}
 \usage{
 rwa_list_su_files(
   bucket_name,
@@ -25,14 +25,14 @@ rwa_list_su_files(
 \item{data_type}{A string (by default \code{NULL}) for which data type to return.
 Options currently include punch-data, tracks, logger, image and pdf.}
 
-\item{year}{A whole number (by default \code{NULL}) indicating which year is
-returned. Format YYYY.}
+\item{year}{A whole number (by default \code{NULL}) indicating which year to
+return. Format YYYY.}
 
-\item{month}{A whole number (by default \code{NULL}) indicating which month is
-returned. Format MM.}
+\item{month}{A whole number (by default \code{NULL}) indicating which month to
+return. Format MM.}
 
-\item{day}{A whole number (by default \code{NULL}) indicating which day is
-returned. Format DD.}
+\item{day}{A whole number (by default \code{NULL}) indicating which day to
+return. Format DD.}
 
 \item{file_name}{A string (by default \code{NULL}) containing the name of the file
 to be returned. Do not include extension type.}
@@ -43,38 +43,41 @@ to return. Do not include period in front of extension.}
 \item{max_request_size}{A whole number (by default \code{1000}) indicating the
 maximum number of files to be returned.}
 
-\item{silent}{A flag (by default \code{FALSE}) to toggle messages about number of
-files returned on and off. Set to \code{TRUE} to silence messages.}
+\item{silent}{A flag (by default \code{FALSE}) to silence messages about number of
+files returned. Set to \code{TRUE} to silence messages.}
 
-\item{aws_access_key_id}{A string of your AWS user access key id from AWS.
-The default is the system environment variable of \code{AWS_ACCESS_KEY_ID}.}
+\item{aws_access_key_id}{A string of your AWS user access key ID from AWS.
+The default is the environment variable called \code{AWS_ACCESS_KEY_ID}.}
 
 \item{aws_secret_access_key}{A string of your AWS user secret access key from
-AWS. The default is the system environment variable of
+AWS. The default is the environment variable called
 \code{AWS_SECRET_ACCESS_KEY}.}
 
-\item{region}{A string of the AWS region you are working within. The default
-is the system environment variable of \code{AWS_REGION}}
+\item{region}{A string of the AWS region. The default is the environment
+variable called \code{AWS_REGION}.}
 }
 \value{
 Vector of object names that match the filter criteria
 }
 \description{
-Wrapper function to \code{rwa_list_files} built to make it easy for accessing
-uploaded files from Shiny apps.
+Wrapper function to \code{rwa_list_files} to simplify accessing files uploaded
+through Shiny apps.
 }
 \examples{
 \dontrun{
 # Getting all the objects related to punch data
-rwa_list_su_files(bucket_name = "my_bucket")
+rwa_list_su_files(bucket_name = "purple-lake-poissonconsulting")
 
 # Get only punch data from 2021
-rwa_list_su_files(bucket_name = "my_bucket", year = 2021)
+rwa_list_su_files(bucket_name = "purple-lake-poissonconsulting",
+                  year = 2021)
 
 # Get only the csv files
-rwa_list_su_files(bucket_name = "my_bucket", extension = "csv")
+rwa_list_su_files(bucket_name = "purple-lake-poissonconsulting",
+                  extension = "csv")
 
 # Combine to only get excel files submitted in 2021
-rwa_list_su_files(bucket_name = "my_bucket", extension = "xlsx", year = 2021)
+rwa_list_su_files(bucket_name = "purple-lake-poissonconsulting",
+                  extension = "xlsx", year = 2021)
 }
 }

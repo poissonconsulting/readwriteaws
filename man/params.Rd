@@ -6,25 +6,26 @@
 \arguments{
 \item{bucket_name}{A string of the AWS S3 bucket name.}
 
-\item{pattern}{A string containing a regular expression.}
+\item{pattern}{A string (by default \code{".*"}) containing a regular expression.
+The default value will return all files retrieved from AWS.}
 
 \item{max_request_size}{A whole number (by default \code{1000}) indicating the
 maximum number of files to be returned.}
 
-\item{silent}{A flag (by default \code{FALSE}) to toggle messages about number of
-files returned on and off. Set to \code{TRUE} to silence messages.}
+\item{silent}{A flag (by default \code{FALSE}) to silence messages about number of
+files returned. Set to \code{TRUE} to silence messages.}
 
 \item{data_type}{A string (by default \code{NULL}) for which data type to return.
 Options currently include punch-data, tracks, logger, image and pdf.}
 
-\item{year}{A whole number (by default \code{NULL}) indicating which year is
-returned. Format YYYY.}
+\item{year}{A whole number (by default \code{NULL}) indicating which year to
+return. Format YYYY.}
 
-\item{month}{A whole number (by default \code{NULL}) indicating which month is
-returned. Format MM.}
+\item{month}{A whole number (by default \code{NULL}) indicating which month to
+return. Format MM.}
 
-\item{day}{A whole number (by default \code{NULL}) indicating which day is
-returned. Format DD.}
+\item{day}{A whole number (by default \code{NULL}) indicating which day to
+return. Format DD.}
 
 \item{file_name}{A string (by default \code{NULL}) containing the name of the file
 to be returned. Do not include extension type.}
@@ -43,15 +44,15 @@ bucket. This allows you to place files in a different folder in the bucket
 then locally. If the default is used the file structure will be identical
 to the \code{file_list} passed.}
 
-\item{aws_access_key_id}{A string of your AWS user access key id from AWS.
-The default is the system environment variable of \code{AWS_ACCESS_KEY_ID}.}
+\item{aws_access_key_id}{A string of your AWS user access key ID from AWS.
+The default is the environment variable called \code{AWS_ACCESS_KEY_ID}.}
 
 \item{aws_secret_access_key}{A string of your AWS user secret access key from
-AWS. The default is the system environment variable of
+AWS. The default is the environment variable called
 \code{AWS_SECRET_ACCESS_KEY}.}
 
-\item{region}{A string of the AWS region you are working within. The default
-is the system environment variable of \code{AWS_REGION}}
+\item{region}{A string of the AWS region. The default is the environment
+variable called \code{AWS_REGION}.}
 }
 \description{
 Descriptions of the parameters for readwriteaws functions

@@ -1,4 +1,4 @@
-#' Upload Files from your Local Drive to AWS
+#' Upload Files from a Local Drive to an AWS S3 Bucket
 #'
 #' Upload files from your local drive to an AWS S3 bucket
 #' @inheritParams params

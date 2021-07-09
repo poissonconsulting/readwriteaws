@@ -2,7 +2,7 @@
 % Please edit documentation in R/rwa-list-files.R
 \name{rwa_list_files}
 \alias{rwa_list_files}
-\title{List Files in S3 Bucket}
+\title{List Files in an AWS S3 Bucket}
 \usage{
 rwa_list_files(
   bucket_name,
@@ -20,20 +20,21 @@ rwa_list_files(
 \item{max_request_size}{A whole number (by default \code{1000}) indicating the
 maximum number of files to be returned.}
 
-\item{pattern}{A string containing a regular expression.}
+\item{pattern}{A string (by default \code{".*"}) containing a regular expression.
+The default value will return all files retrieved from AWS.}
 
-\item{silent}{A flag (by default \code{FALSE}) to toggle messages about number of
-files returned on and off. Set to \code{TRUE} to silence messages.}
+\item{silent}{A flag (by default \code{FALSE}) to silence messages about number of
+files returned. Set to \code{TRUE} to silence messages.}
 
-\item{aws_access_key_id}{A string of your AWS user access key id from AWS.
-The default is the system environment variable of \code{AWS_ACCESS_KEY_ID}.}
+\item{aws_access_key_id}{A string of your AWS user access key ID from AWS.
+The default is the environment variable called \code{AWS_ACCESS_KEY_ID}.}
 
 \item{aws_secret_access_key}{A string of your AWS user secret access key from
-AWS. The default is the system environment variable of
+AWS. The default is the environment variable called
 \code{AWS_SECRET_ACCESS_KEY}.}
 
-\item{region}{A string of the AWS region you are working within. The default
-is the system environment variable of \code{AWS_REGION}}
+\item{region}{A string of the AWS region. The default is the environment
+variable called \code{AWS_REGION}.}
 }
 \value{
 Vector of object names that match the filter criteria
@@ -50,43 +51,45 @@ make multiple request to AWS until \code{max_request_size} is reached or all the
 files are listed.
 
 The \code{pattern} argument is a regex that is applied after all the files are
-obtained from AWS. If this argument is given you may get less then the
-value given for \code{max_request_size} as it will only return the objects that
-match the pattern.
+obtained from AWS. The default value will ensure all files retrieved from
+AWS are listed. If other values are given you may get less then the value
+for \code{max_request_size} as it will only return the objects that match the
+pattern.
 
-Review the messages outputted by the function if you are unsure if you
-should increase \verb{max_request size}.
+Review the messages if you are unsure if you should increase
+\verb{max_request size}.
 }
 \examples{
 \dontrun{
-# List all files in the bucket up to a max of 1000
-rwa_list_files(bucket_name = "my-project-bucket")
+# List all files in the bucket (up to a max of 1000)
+rwa_list_files(
+  bucket_name = "purple-lake-poissonconsulting"
+)
 
 # Add regex to only list pdfs from June 30, 2020
 rwa_list_files(
-  bucket_name = "my-project-bucket",
+  bucket_name = "purple-lake-poissonconsulting",
   pattern = "pdf.*2021-06-30"
 )
 
 # List all files in the bucket up to a max of 2000
 rwa_list_files(
-  bucket_name = "my-project-bucket",
+  bucket_name = "purple-lake-poissonconsulting",
   max_request_size = 2000
 )
 
 # Turn off help messages regarding total number of files returned
 rwa_list_files(
-  bucket_name = "my-project-bucket",
+  bucket_name = "purple-lake-poissonconsulting",
   silent = TRUE
 )
 
 # Enter AWS credentials directly into the function
 rwa_list_files(
-  bucket_name = "my-project-bucket",
+  bucket_name = "purple-lake-poissonconsulting",
   aws_access_key_id = "AHSGYWKJDIUAHDSJ",
   aws_secret_access_key = "8HYGD54//hgdx^785809",
   region = "us-east-1"
 )
-
 }
 }

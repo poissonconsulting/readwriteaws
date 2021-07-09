@@ -1,10 +1,10 @@
-#' List Files in S3 Bucket
+#' List Files in an AWS S3 Bucket
 #'
 #' Obtain a list of files within an AWS S3 Bucket
 #'
 #' @inheritParams params
 #'
-#' @return Vector of object names that match the filter criteria
+#' @return Character vector of files names.
 #'
 #' @details The AWS API only allows a max of 1000 objects to return per request.
 #'   The `max_request_size` argument is for creating multiple requests to the
@@ -14,39 +14,42 @@
 #'   files are listed.
 #'
 #'   The `pattern` argument is a regex that is applied after all the files are
-#'   obtained from AWS. If this argument is given you may get less then the
-#'   value given for `max_request_size` as it will only return the objects that
-#'   match the pattern.
+#'   obtained from AWS. The default value will ensure all files retrieved from
+#'   AWS are listed. If other values are given you may get less then the value
+#'   for `max_request_size` as it will only return the objects that match the
+#'   pattern.
 #'
-#'   Review the messages outputted by the function if you are unsure if you
-#'   should increase `max_request size`.
+#'   Review the messages if you are unsure if you should increase
+#'   `max_request size`.
 #'
 #' @examples
 #' \dontrun{
-#' # List all files in the bucket up to a max of 1000
-#' rwa_list_files(bucket_name = "my-project-bucket")
+#' # List all files in the bucket (up to a max of 1000)
+#' rwa_list_files(
+#'   bucket_name = "purple-lake-poissonconsulting"
+#' )
 #'
 #' # Add regex to only list pdfs from June 30, 2020
 #' rwa_list_files(
-#'   bucket_name = "my-project-bucket",
+#'   bucket_name = "purple-lake-poissonconsulting",
 #'   pattern = "pdf.*2021-06-30"
 #' )
 #'
 #' # List all files in the bucket up to a max of 2000
 #' rwa_list_files(
-#'   bucket_name = "my-project-bucket",
+#'   bucket_name = "purple-lake-poissonconsulting",
 #'   max_request_size = 2000
 #' )
 #'
 #' # Turn off help messages regarding total number of files returned
 #' rwa_list_files(
-#'   bucket_name = "my-project-bucket",
+#'   bucket_name = "purple-lake-poissonconsulting",
 #'   silent = TRUE
 #' )
 #'
 #' # Enter AWS credentials directly into the function
 #' rwa_list_files(
-#'   bucket_name = "my-project-bucket",
+#'   bucket_name = "purple-lake-poissonconsulting",
 #'   aws_access_key_id = "AHSGYWKJDIUAHDSJ",
 #'   aws_secret_access_key = "8HYGD54//hgdx^785809",
 #'   region = "us-east-1"
@@ -100,14 +103,19 @@ rwa_list_files <- function(bucket_name,
     usethis::ui_info(msg)
 
     if (input_max_request == no_all_keys) {
-      usethis::ui_warn("{usethis::ui_path('Max_request_size')} matches retrieved files from AWS. Think about increasing {usethis::ui_path('Max_request_size')} as there could be more files present")
+      usethis::ui_warn(paste("{usethis::ui_path('Max_request_size')} matches",
+                              "retrieved files from AWS. Think about",
+                              "increasing",
+                              "{usethis::ui_path('Max_request_size')}",
+                              "as there could be more files present"))
     }
   }
 
   filter_files <- grep(pattern, all_keys, value = TRUE)
 
   if (!silent) {
-    msg <- paste(length(filter_files), "files returned after {usethis::ui_path('pattern')}  is applied")
+    msg <- paste(length(filter_files), "files returned after",
+                 "{usethis::ui_path('pattern')} is applied")
     usethis::ui_info(msg)
   }
 

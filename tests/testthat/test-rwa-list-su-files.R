@@ -107,7 +107,8 @@ test_that("get 2 files - pdf and year, month", {
   expect_equal(length(file_list), 2L)
 })
 
-test_that("get 2 files - pdf and year, month when month passed as single digit", {
+test_that("get 2 files - pdf and year, month when month
+          passed as single digit", {
   file_list <- rwa_list_su_files(
     bucket_name = bucket_name,
     data_type = "pdf",

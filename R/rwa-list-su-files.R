@@ -1,24 +1,27 @@
-#' List Data files in a S3 Bucket
+#' List Shiny Upload Files in an AWS S3 Bucket
 #'
-#' Wrapper function to `rwa_list_files` built to make it easy for accessing
-#' uploaded files from Shiny apps.
+#' Wrapper function to `rwa_list_files` to simplify accessing files uploaded
+#' through Shiny apps.
 #' @inheritParams params
 #'
-#' @return Vector of object names that match the filter criteria
+#' @return Character vector of files names.
 #'
 #' @examples
 #' \dontrun{
 #' # Getting all the objects related to punch data
-#' rwa_list_su_files(bucket_name = "my_bucket")
+#' rwa_list_su_files(bucket_name = "purple-lake-poissonconsulting")
 #'
 #' # Get only punch data from 2021
-#' rwa_list_su_files(bucket_name = "my_bucket", year = 2021)
+#' rwa_list_su_files(bucket_name = "purple-lake-poissonconsulting",
+#'                   year = 2021)
 #'
 #' # Get only the csv files
-#' rwa_list_su_files(bucket_name = "my_bucket", extension = "csv")
+#' rwa_list_su_files(bucket_name = "purple-lake-poissonconsulting",
+#'                   extension = "csv")
 #'
 #' # Combine to only get excel files submitted in 2021
-#' rwa_list_su_files(bucket_name = "my_bucket", extension = "xlsx", year = 2021)
+#' rwa_list_su_files(bucket_name = "purple-lake-poissonconsulting",
+#'                   extension = "xlsx", year = 2021)
 #' }
 #' @export
 rwa_list_su_files <- function(bucket_name,
