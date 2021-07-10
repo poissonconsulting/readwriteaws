@@ -42,6 +42,19 @@ for more info.
 
 ## Examples
 
+#### Downloading files for analysis
+
+``` r
+capture_2021 <- rwa_list_su_files(bucket_name = "purple-lake-poissonconsulting", 
+                                  data_type = "punch-data",
+                                  year = 2021,
+                                  file_extension = "csv")
+
+rwa_download_files(file_list = capture_2021, 
+                   directory = "purple-lake", 
+                   bucket_name = "purple-lake-poissonconsulting")
+```
+
 ## How to Contribute
 
 Please report any

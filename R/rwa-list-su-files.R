@@ -8,18 +8,18 @@
 #'
 #' @examples
 #' \dontrun{
-#' # Getting all the objects related to punch data
+#' # Get a list of all the files in the bucket
 #' rwa_list_su_files(bucket_name = "purple-lake-poissonconsulting")
 #'
-#' # Get only punch data from 2021
+#' # Get a list of all files from 2021
 #' rwa_list_su_files(bucket_name = "purple-lake-poissonconsulting",
 #'                   year = 2021)
 #'
-#' # Get only the csv files
+#' # Get a list of all the csv files
 #' rwa_list_su_files(bucket_name = "purple-lake-poissonconsulting",
 #'                   extension = "csv")
 #'
-#' # Combine to only get excel files submitted in 2021
+#' # Get a list of excel files from 2021
 #' rwa_list_su_files(bucket_name = "purple-lake-poissonconsulting",
 #'                   extension = "xlsx", year = 2021)
 #' }
