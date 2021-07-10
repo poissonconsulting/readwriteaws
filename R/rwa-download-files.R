@@ -4,13 +4,13 @@
 #' @inheritParams params
 #' @param silent A flag (by default `FALSE`) to toggle the progress bar on and
 #'   off. Set to `TRUE` to turn off progress bar.
-#' @param directory A string of the directory to copy the files to. The
+#' @param directory A string of the local directory to copy the files to. The
 #'   directory must already exist.
 #'
-#' @details If the `directory` given is empty you will not be prompted about
-#'   potentially overwriting files. You are only asked if the `directory` is not
-#'   empty. Use at your own risk as it will overwrite any files with matching
-#'   file paths to the files downloaded from AWS.
+#' @details The user is prompted about overwriting files if the `directory` is
+#'   not completely empty. The function doesn't check which files are present
+#'   only if its empty or not. Use at your own risk as it will overwrite any
+#'   files with matching file paths to the files in the S3 bucket.
 #'
 #' @examples
 #' \dontrun{

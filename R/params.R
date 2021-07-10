@@ -20,14 +20,14 @@
 #'   return. Format YYYY.
 #' @param month A whole number (by default `NULL`) indicating which month to
 #'   return. Format MM.
-#' @param day A whole number (by default `NULL`) indicating which day to
-#'   return. Format DD.
+#' @param day A whole number (by default `NULL`) indicating which day to return.
+#'   Format DD.
 #' @param file_name A string (by default `NULL`) containing the name of the file
 #'   to return. Do not include extension type.
-#' @param file_extension A string (by default `NULL`) with the file extension
-#'   to return. Do not include period.
+#' @param file_extension A string (by default `NULL`) with the file extension to
+#'   return. Do not include period.
 #'
-#' @param file_list A character vector containing a list of files.
+#' @param file_list A character vector of file(s).
 #'
 #' @param ask A flag (by default `TRUE`) to toggle on and off being asked about
 #'   potentially overwriting files present in the directory argument. Set to
@@ -38,11 +38,10 @@
 #'   then locally. If the default is used the file structure will be identical
 #'   to the `file_list` passed.
 #'
-#' @param aws_access_key_id A string of your AWS user access key ID from AWS.
-#'   The default is the environment variable called `AWS_ACCESS_KEY_ID`.
-#' @param aws_secret_access_key A string of your AWS user secret access key from
-#'   AWS. The default is the environment variable called
-#'   `AWS_SECRET_ACCESS_KEY`.
+#' @param aws_access_key_id A string of your AWS user access key ID. The default
+#'   is the environment variable named `AWS_ACCESS_KEY_ID`.
+#' @param aws_secret_access_key A string of your AWS user secret access key. The
+#'   default is the environment variable named `AWS_SECRET_ACCESS_KEY`.
 #' @param region A string of the AWS region. The default is the environment
-#'   variable called `AWS_REGION`.
+#'   variable named `AWS_REGION`.
 NULL

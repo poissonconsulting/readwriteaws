@@ -31,14 +31,14 @@ return. Format YYYY.}
 \item{month}{A whole number (by default \code{NULL}) indicating which month to
 return. Format MM.}
 
-\item{day}{A whole number (by default \code{NULL}) indicating which day to
-return. Format DD.}
+\item{day}{A whole number (by default \code{NULL}) indicating which day to return.
+Format DD.}
 
 \item{file_name}{A string (by default \code{NULL}) containing the name of the file
-to be returned. Do not include extension type.}
+to return. Do not include extension type.}
 
-\item{file_extension}{A string (by default \code{NULL}) for which file extension
-to return. Do not include period in front of extension.}
+\item{file_extension}{A string (by default \code{NULL}) with the file extension to
+return. Do not include period.}
 
 \item{max_request_size}{A whole number (by default \code{1000}) indicating the
 maximum number of files to be returned.}
@@ -46,18 +46,17 @@ maximum number of files to be returned.}
 \item{silent}{A flag (by default \code{FALSE}) to silence messages about number of
 files returned. Set to \code{TRUE} to silence messages.}
 
-\item{aws_access_key_id}{A string of your AWS user access key ID from AWS.
-The default is the environment variable called \code{AWS_ACCESS_KEY_ID}.}
+\item{aws_access_key_id}{A string of your AWS user access key ID. The default
+is the environment variable named \code{AWS_ACCESS_KEY_ID}.}
 
-\item{aws_secret_access_key}{A string of your AWS user secret access key from
-AWS. The default is the environment variable called
-\code{AWS_SECRET_ACCESS_KEY}.}
+\item{aws_secret_access_key}{A string of your AWS user secret access key. The
+default is the environment variable named \code{AWS_SECRET_ACCESS_KEY}.}
 
 \item{region}{A string of the AWS region. The default is the environment
-variable called \code{AWS_REGION}.}
+variable named \code{AWS_REGION}.}
 }
 \value{
-Vector of object names that match the filter criteria
+Character vector of files names.
 }
 \description{
 Wrapper function to \code{rwa_list_files} to simplify accessing files uploaded

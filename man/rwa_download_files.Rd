@@ -16,9 +16,9 @@ rwa_download_files(
 )
 }
 \arguments{
-\item{file_list}{A character vector containing a list of files.}
+\item{file_list}{A character vector of file(s).}
 
-\item{directory}{A string of the directory to copy the files to. The
+\item{directory}{A string of the local directory to copy the files to. The
 directory must already exist.}
 
 \item{bucket_name}{A string of the AWS S3 bucket name.}
@@ -30,24 +30,23 @@ off. Set to \code{TRUE} to turn off progress bar.}
 potentially overwriting files present in the directory argument. Set to
 \code{FALSE} to not be asked.}
 
-\item{aws_access_key_id}{A string of your AWS user access key ID from AWS.
-The default is the environment variable called \code{AWS_ACCESS_KEY_ID}.}
+\item{aws_access_key_id}{A string of your AWS user access key ID. The default
+is the environment variable named \code{AWS_ACCESS_KEY_ID}.}
 
-\item{aws_secret_access_key}{A string of your AWS user secret access key from
-AWS. The default is the environment variable called
-\code{AWS_SECRET_ACCESS_KEY}.}
+\item{aws_secret_access_key}{A string of your AWS user secret access key. The
+default is the environment variable named \code{AWS_SECRET_ACCESS_KEY}.}
 
 \item{region}{A string of the AWS region. The default is the environment
-variable called \code{AWS_REGION}.}
+variable named \code{AWS_REGION}.}
 }
 \description{
 Copies files from your AWS S3 bucket to a local drive
 }
 \details{
-If the \code{directory} given is empty you will not be prompted about
-potentially overwriting files. You are only asked if the \code{directory} is not
-empty. Use at your own risk as it will overwrite any files with matching
-file paths to the files downloaded from AWS.
+The user is prompted about overwriting files if the \code{directory} is
+not completely empty. The function doesn't check which files are present
+only if its empty or not. Use at your own risk as it will overwrite any
+files with matching file paths to the files in the S3 bucket.
 }
 \examples{
 \dontrun{

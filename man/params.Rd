@@ -24,16 +24,16 @@ return. Format YYYY.}
 \item{month}{A whole number (by default \code{NULL}) indicating which month to
 return. Format MM.}
 
-\item{day}{A whole number (by default \code{NULL}) indicating which day to
-return. Format DD.}
+\item{day}{A whole number (by default \code{NULL}) indicating which day to return.
+Format DD.}
 
 \item{file_name}{A string (by default \code{NULL}) containing the name of the file
-to be returned. Do not include extension type.}
+to return. Do not include extension type.}
 
-\item{file_extension}{A string (by default \code{NULL}) for which file extension
-to return. Do not include period in front of extension.}
+\item{file_extension}{A string (by default \code{NULL}) with the file extension to
+return. Do not include period.}
 
-\item{file_list}{A character vector containing a list of files.}
+\item{file_list}{A character vector of file(s).}
 
 \item{ask}{A flag (by default \code{TRUE}) to toggle on and off being asked about
 potentially overwriting files present in the directory argument. Set to
@@ -44,15 +44,14 @@ bucket. This allows you to place files in a different folder in the bucket
 then locally. If the default is used the file structure will be identical
 to the \code{file_list} passed.}
 
-\item{aws_access_key_id}{A string of your AWS user access key ID from AWS.
-The default is the environment variable called \code{AWS_ACCESS_KEY_ID}.}
+\item{aws_access_key_id}{A string of your AWS user access key ID. The default
+is the environment variable named \code{AWS_ACCESS_KEY_ID}.}
 
-\item{aws_secret_access_key}{A string of your AWS user secret access key from
-AWS. The default is the environment variable called
-\code{AWS_SECRET_ACCESS_KEY}.}
+\item{aws_secret_access_key}{A string of your AWS user secret access key. The
+default is the environment variable named \code{AWS_SECRET_ACCESS_KEY}.}
 
 \item{region}{A string of the AWS region. The default is the environment
-variable called \code{AWS_REGION}.}
+variable named \code{AWS_REGION}.}
 }
 \description{
 Descriptions of the parameters for readwriteaws functions

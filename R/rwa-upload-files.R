@@ -6,50 +6,47 @@
 #'   the files are locally located.
 #'
 #' @details The directory argument can take either relative or absolute file
-#'   paths. The directory and `file_list` argument are designed to be used
-#'   together. The `file_list` argument can be used without the directory
-#'   argument if required.
+#'   paths. The `directory` and `file_list` argument are designed to be used
+#'   together but `file_list` can be used alone and pass `NULL` to `directory`.
 #'
 #'   The `bucket_path` argument makes it possible to place files in a different
 #'   folder path in the bucket then locally. The `bucket_path` argument is
-#'   appended to the `file_list`.
-#'
-#'   The `directory` argument is not included in the file path of the files in
-#'   the bucket.
+#'   appended to the `file_list`. The `directory` argument is not included in
+#'   the file path of the files in the bucket.
 #'
 #' @examples
 #' \dontrun{
 #' # Upload a single file to the Purple Lake project
 #' rwa_upload_files(
-#'   file_list = "image/2021-06-30_16-06-10_test_04d855/input_data.csv",
-#'   directory = "shiny-upload",
+#'   file_list = "shiny-upload/image/2021-06-30_16-06-10_test_04d855/input_data.csv",
+#'   directory = "purple-lake",
 #'   bucket_name = "purple-lake-poissonconsulting"
 #' )
 #'
 #' # Upload multiple files to the Purple Lake project
 #' files <- c(
-#'   "image/2021-06-30_16-06-10_test_04d855/uploaded_file.jpeg",
-#'   "image/2021-06-30_16-06-10_test_04d855/input_data.csv"
+#'   "shiny-upload/image/2021-06-30_16-06-10_test_04d855/uploaded_file.jpeg",
+#'   "shiny-upload/image/2021-06-30_16-06-10_test_04d855/input_data.csv"
 #' )
 #' rwa_upload_files(
 #'   file_list = files,
-#'   directory = "shiny-upload",
+#'   directory = "purple-lake",
 #'   bucket_name = "purple-lake-poissonconsulting"
 #' )
 #'
-#' # Store file in different file path then locally stored
+#' # Store file in different file path in AWS then locally stored
 #' rwa_upload_files(
-#'   file_list = "image/2021-06-30_16-06-10_test_04d855/input_data.csv",
-#'   directory = "shiny-upload",
+#'   file_list = "shiny-upload/image/2021-06-30_16-06-10_test_04d855/input_data.csv",
+#'   directory = "purple-lake",
 #'   bucket_name = "purple-lake-poissonconsulting",
 #'   bucket_path = "extra_data"
 #' )
 #'
 #' # Enter AWS credentials directly into the function
 #' rwa_upload_files(
-#'   file_list = "image/2021-06-30_16-06-10_test_04d855/input_data.csv",
-#'   directory = "shiny-upload",
-#'   bucket_name = "my-project-bucket",
+#'   file_list = "shiny-upload/image/2021-06-30_16-06-10_test_04d855/input_data.csv",
+#'   directory = "purple-lake",
+#'   bucket_name = "purple-lake-poissonconsulting",
 #'   aws_access_key_id = "AHSGYWKJDIUAHDSJ",
 #'   aws_secret_access_key = "8HYGD54//hgdx^785809",
 #'   region = "us-east-1"

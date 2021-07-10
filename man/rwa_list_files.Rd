@@ -26,18 +26,17 @@ The default value will return all files retrieved from AWS.}
 \item{silent}{A flag (by default \code{FALSE}) to silence messages about number of
 files returned. Set to \code{TRUE} to silence messages.}
 
-\item{aws_access_key_id}{A string of your AWS user access key ID from AWS.
-The default is the environment variable called \code{AWS_ACCESS_KEY_ID}.}
+\item{aws_access_key_id}{A string of your AWS user access key ID. The default
+is the environment variable named \code{AWS_ACCESS_KEY_ID}.}
 
-\item{aws_secret_access_key}{A string of your AWS user secret access key from
-AWS. The default is the environment variable called
-\code{AWS_SECRET_ACCESS_KEY}.}
+\item{aws_secret_access_key}{A string of your AWS user secret access key. The
+default is the environment variable named \code{AWS_SECRET_ACCESS_KEY}.}
 
 \item{region}{A string of the AWS region. The default is the environment
-variable called \code{AWS_REGION}.}
+variable named \code{AWS_REGION}.}
 }
 \value{
-Vector of object names that match the filter criteria
+Character vector of files names.
 }
 \description{
 Obtain a list of files within an AWS S3 Bucket
