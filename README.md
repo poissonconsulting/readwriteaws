@@ -10,11 +10,14 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 ## Overview
 
 This package is designed for Poisson employees to easily access our
-files within our AWS s3 buckets. The general workflow for this package
-is:  
-1. Get the list of files  
-2. Download them to your local drive  
-3. Use them as normal
+files within our AWS S3 buckets. The general workflow for this package
+is:
+
+1.  Obtain a list of files from the bucket
+2.  Download them to your local drive
+
+This package can also upload files from our local drive to AWS S3
+buckets as well.
 
 ## Installation
 
