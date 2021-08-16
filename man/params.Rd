@@ -16,7 +16,8 @@ maximum number of files to be returned.}
 files returned. Set to \code{TRUE} to silence messages.}
 
 \item{data_type}{A string (by default \code{NULL}) for which data type to return.
-Options currently include punch-data, tracks, logger, image and pdf.}
+Check the folder names within the shiny-upload in AWS for options common
+examples include punch-data, tracks, logger, image and pdf.}
 
 \item{year}{A whole number (by default \code{NULL}) indicating which year to
 return. Format YYYY.}

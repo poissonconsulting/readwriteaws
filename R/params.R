@@ -15,7 +15,8 @@
 #'   files returned. Set to `TRUE` to silence messages.
 #'
 #' @param data_type A string (by default `NULL`) for which data type to return.
-#'   Options currently include punch-data, tracks, logger, image and pdf.
+#'   Check the folder names within the shiny-upload in AWS for options common
+#'   examples include punch-data, tracks, logger, image and pdf.
 #' @param year A whole number (by default `NULL`) indicating which year to
 #'   return. Format YYYY.
 #' @param month A whole number (by default `NULL`) indicating which month to
