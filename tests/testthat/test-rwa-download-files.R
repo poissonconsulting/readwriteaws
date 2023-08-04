@@ -1,9 +1,9 @@
 
 bucket_name <- "readwriteaws-test-poissonconsulting"
 
-file_01 <- "shiny-upload/api_test/demo-1.pdf"
-file_02 <- "shiny-upload/api_test/demo-2.pdf"
-file_03 <- "shiny-upload/api_test/demo-3.pdf"
+file_01 <- "shiny-upload/pdf/2023-08-02_09-39-40.535327_test_daddf0561fc45b4168bd38aad50bbc47/uploaded_file.pdf"
+file_02 <- "shiny-upload/pdf/2023-08-02_09-40-01.324048_test_21bf7bf201db76031cd1ecd680815964/uploaded_file.pdf"
+file_03 <- "shiny-upload/pdf/2023-08-02_09-40-01.324048_test_21bf7bf201db76031cd1ecd680815964/input_data.csv"
 
 multi_files <- c(file_02, file_03)
 
