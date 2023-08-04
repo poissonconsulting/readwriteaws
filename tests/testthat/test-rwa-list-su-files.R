@@ -1,44 +1,44 @@
 
 bucket_name <- "readwriteaws-test-poissonconsulting"
 
-test_that("get 2 image related files", {
+test_that("get 6 image related files", {
   file_list <- rwa_list_su_files(
     bucket_name = bucket_name,
     data_type = "image",
     max_request_size = 2000,
     silent = TRUE
   )
-  expect_equal(length(file_list), 2L)
+  expect_equal(length(file_list), 6L)
 })
 
 test_that("get 2 image related files", {
   file_list <- rwa_list_su_files(
     bucket_name = bucket_name,
     data_type = "image",
-    max_request_size = 1014,
+    max_request_size = 2,
     silent = TRUE
   )
   expect_equal(length(file_list), 2L)
 })
 
-test_that("get 2 image related files", {
+test_that("get 1 image related files", {
   file_list <- rwa_list_su_files(
     bucket_name = bucket_name,
     data_type = "image",
-    max_request_size = 1000,
+    max_request_size = 1,
     silent = TRUE
   )
-  expect_equal(length(file_list), 0L)
+  expect_equal(length(file_list), 1L)
 })
 
-test_that("get 2 logger related files", {
+test_that("get 4 logger related files", {
   file_list <- rwa_list_su_files(
     bucket_name = bucket_name,
     data_type = "logger",
     max_request_size = 2000,
     silent = TRUE
   )
-  expect_equal(length(file_list), 2L)
+  expect_equal(length(file_list), 4L)
 })
 
 test_that("get 4 pdf related files", {
@@ -51,125 +51,125 @@ test_that("get 4 pdf related files", {
   expect_equal(length(file_list), 4L)
 })
 
-test_that("get 3 punch data related files", {
+test_that("get 6 punch data related files", {
   file_list <- rwa_list_su_files(
     bucket_name = bucket_name,
-    data_type = "punch-data",
-    max_request_size = 2000,
-    silent = TRUE
-  )
-  expect_equal(length(file_list), 3L)
-})
-
-test_that("get 3 tracks related files", {
-  file_list <- rwa_list_su_files(
-    bucket_name = bucket_name,
-    data_type = "tracks",
-    max_request_size = 2000,
-    silent = TRUE
-  )
-  expect_equal(length(file_list), 3L)
-})
-
-test_that("get 2 files - pdf and year, month, day", {
-  file_list <- rwa_list_su_files(
-    bucket_name = bucket_name,
-    data_type = "pdf",
-    year = 2021,
-    month = 06,
-    day = 30,
-    max_request_size = 2000,
-    silent = TRUE
-  )
-  expect_equal(length(file_list), 2L)
-})
-
-test_that("get 4 files - pdf and year", {
-  file_list <- rwa_list_su_files(
-    bucket_name = bucket_name,
-    data_type = "pdf",
-    year = 2021,
-    max_request_size = 2000,
-    silent = TRUE
-  )
-  expect_equal(length(file_list), 4L)
-})
-
-test_that("get 2 files - pdf and year, month", {
-  file_list <- rwa_list_su_files(
-    bucket_name = bucket_name,
-    data_type = "pdf",
-    year = 2021,
-    month = 06,
-    max_request_size = 2000,
-    silent = TRUE
-  )
-  expect_equal(length(file_list), 2L)
-})
-
-test_that("get 2 files - pdf and year, month when month
-          passed as single digit", {
-  file_list <- rwa_list_su_files(
-    bucket_name = bucket_name,
-    data_type = "pdf",
-    year = 2021,
-    month = 6,
-    max_request_size = 2000,
-    silent = TRUE
-  )
-  expect_equal(length(file_list), 2L)
-})
-
-test_that("get 5 files - year & month", {
-  file_list <- rwa_list_su_files(
-    bucket_name = bucket_name,
-    year = 2021,
-    month = 07,
-    max_request_size = 2000,
-    silent = TRUE
-  )
-  expect_equal(length(file_list), 5L)
-})
-
-test_that("get 2 files - pdf and day", {
-  file_list <- rwa_list_su_files(
-    bucket_name = bucket_name,
-    data_type = "pdf",
-    day = 30,
-    max_request_size = 2000,
-    silent = TRUE
-  )
-  expect_equal(length(file_list), 2L)
-})
-
-test_that("get 6 files - file name of input_data", {
-  file_list <- rwa_list_su_files(
-    bucket_name = bucket_name,
-    file_name = "input_data",
+    data_type = "punched-data",
     max_request_size = 2000,
     silent = TRUE
   )
   expect_equal(length(file_list), 6L)
 })
 
-test_that("get 4 files - file name of input_data", {
+test_that("get 6 tracks related files", {
   file_list <- rwa_list_su_files(
     bucket_name = bucket_name,
-    file_name = "uploaded_file",
+    data_type = "tracks",
+    max_request_size = 2000,
+    silent = TRUE
+  )
+  expect_equal(length(file_list), 6L)
+})
+
+test_that("get 4 files - pdf and year, month, day", {
+  file_list <- rwa_list_su_files(
+    bucket_name = bucket_name,
+    data_type = "pdf",
+    year = 2023,
+    month = 08,
+    day = 02,
     max_request_size = 2000,
     silent = TRUE
   )
   expect_equal(length(file_list), 4L)
 })
 
-test_that("get 7 files - file extension csv", {
+test_that("get 4 files - pdf and year", {
+  file_list <- rwa_list_su_files(
+    bucket_name = bucket_name,
+    data_type = "pdf",
+    year = 2023,
+    max_request_size = 2000,
+    silent = TRUE
+  )
+  expect_equal(length(file_list), 4L)
+})
+
+test_that("get 4 files - logger and year, month", {
+  file_list <- rwa_list_su_files(
+    bucket_name = bucket_name,
+    data_type = "logger",
+    year = 2023,
+    month = 08,
+    max_request_size = 2000,
+    silent = TRUE
+  )
+  expect_equal(length(file_list), 4L)
+})
+
+test_that("get 4 files - logger and year, month when month
+          passed as single digit", {
+  file_list <- rwa_list_su_files(
+    bucket_name = bucket_name,
+    data_type = "logger",
+    year = 2023,
+    month = 8,
+    max_request_size = 2000,
+    silent = TRUE
+  )
+  expect_equal(length(file_list), 4L)
+})
+
+test_that("get 26 files - year & month", {
+  file_list <- rwa_list_su_files(
+    bucket_name = bucket_name,
+    year = 2023,
+    month = 08,
+    max_request_size = 2000,
+    silent = TRUE
+  )
+  expect_equal(length(file_list), 26L)
+})
+
+test_that("get 2 files - pdf and day", {
+  file_list <- rwa_list_su_files(
+    bucket_name = bucket_name,
+    data_type = "logger",
+    day = 02,
+    max_request_size = 2000,
+    silent = TRUE
+  )
+  expect_equal(length(file_list), 2L)
+})
+
+test_that("get 11 files - file name of input_data", {
+  file_list <- rwa_list_su_files(
+    bucket_name = bucket_name,
+    file_name = "input_data",
+    max_request_size = 2000,
+    silent = TRUE
+  )
+  expect_equal(length(file_list), 11L)
+})
+
+test_that("get 7 files - file name of uploaded_file", {
+  file_list <- rwa_list_su_files(
+    bucket_name = bucket_name,
+    file_name = "uploaded_file",
+    max_request_size = 2000,
+    silent = TRUE
+  )
+  expect_equal(length(file_list), 7L)
+})
+
+test_that("get 13 files - file extension csv", {
   file_list <- rwa_list_su_files(
     bucket_name = bucket_name,
     file_extension = "csv",
     max_request_size = 2000,
     silent = TRUE
   )
-  expect_equal(length(file_list), 7L)
+  expect_equal(length(file_list), 13L)
 })
 
 test_that("get 2 files - file extension pdf", {
@@ -182,36 +182,47 @@ test_that("get 2 files - file extension pdf", {
   expect_equal(length(file_list), 2L)
 })
 
-test_that("get 1 files - file extension gpx", {
+test_that("get 2 files - file extension gpx", {
   file_list <- rwa_list_su_files(
     bucket_name = bucket_name,
     file_extension = "gpx",
     max_request_size = 2000,
     silent = TRUE
   )
-  expect_equal(length(file_list), 1L)
+  expect_equal(length(file_list), 2L)
 })
 
-test_that("get 3 files - tracks and day given as 2 digits", {
+test_that("get 6 files - tracks and day given as 2 digits", {
   file_list <- rwa_list_su_files(
     bucket_name = bucket_name,
     data_type = "tracks",
-    day = 01,
+    day = 03,
     max_request_size = 2000,
     silent = TRUE
   )
-  expect_equal(length(file_list), 3L)
+  expect_equal(length(file_list), 6L)
 })
 
-test_that("get 3 files - tracks and day given as 1 digit", {
+test_that("get 0 files - tracks and day given as 2 digits", {
   file_list <- rwa_list_su_files(
     bucket_name = bucket_name,
     data_type = "tracks",
-    day = 1,
+    day = 02,
     max_request_size = 2000,
     silent = TRUE
   )
-  expect_equal(length(file_list), 3L)
+  expect_equal(file_list, character(0))
+})
+
+test_that("get 6 files - tracks and day given as 1 digit", {
+  file_list <- rwa_list_su_files(
+    bucket_name = bucket_name,
+    data_type = "tracks",
+    day = 3,
+    max_request_size = 2000,
+    silent = TRUE
+  )
+  expect_equal(length(file_list), 6L)
 })
 
 test_that("error when year is passed as string", {
