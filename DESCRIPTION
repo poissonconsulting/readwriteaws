@@ -1,6 +1,6 @@
 Package: readwriteaws
 Title: Connection between s3 bucket structure and local file directories
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: 
     person(given = "Ayla",
            family = "Pearson",
