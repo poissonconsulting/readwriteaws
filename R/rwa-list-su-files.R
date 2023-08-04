@@ -36,15 +36,15 @@ rwa_list_su_files <- function(bucket_name,
                               aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
                               aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
                               region = Sys.getenv("AWS_REGION", "ca-central-1")) {
-  chk::chk_null_or(data_type, chk::chk_string)
-  chk::chk_null_or(year, chk::chk_whole_number)
+  chk::chk_null_or(data_type, vld = chk::vld_string)
+  chk::chk_null_or(year, vld = chk::vld_whole_number)
   chk::chk_range(year, range = c(1900, 2100))
-  chk::chk_null_or(month, chk::chk_whole_number)
+  chk::chk_null_or(month, vld = chk::vld_whole_number)
   chk::chk_range(month, range = c(1, 12))
-  chk::chk_null_or(day, chk::chk_whole_number)
+  chk::chk_null_or(day, vld = chk::vld_whole_number)
   chk::chk_range(day, range = c(1, 31))
-  chk::chk_null_or(file_name, chk::chk_string)
-  chk::chk_null_or(file_extension, chk::chk_string)
+  chk::chk_null_or(file_name, vld = chk::vld_string)
+  chk::chk_null_or(file_extension, vld = chk::vld_string)
   chk::chk_whole_number(max_request_size)
   chk::chk_gt(max_request_size, value = 0)
   chk::chk_string(aws_access_key_id)

@@ -62,7 +62,7 @@ rwa_upload_files <- function(file_list,
                              aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
                              region = Sys.getenv("AWS_REGION", "ca-central-1")) {
   chk::chk_character(file_list)
-  chk::chk_null_or(directory, chk::chk_dir)
+  chk::chk_null_or(directory, vld = chk::vld_dir)
   chk::chk_string(bucket_name)
   chk::chk_string(bucket_path)
   chk::chk_string(aws_access_key_id)

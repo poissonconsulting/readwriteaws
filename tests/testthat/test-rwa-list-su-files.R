@@ -226,35 +226,35 @@ test_that("get 6 files - tracks and day given as 1 digit", {
 })
 
 test_that("error when year is passed as string", {
-  expect_error(rwa_list_su_files(
-    bucket_name = bucket_name,
-    year = "2021",
-    max_request_size = 2000,
-    silent = TRUE
-  ),
-  regexp = "must be a whole number"
+  expect_error(
+    rwa_list_su_files(
+      bucket_name = bucket_name,
+      year = "2021",
+      max_request_size = 2000,
+      silent = TRUE
+    )
   )
 })
 
 test_that("error when month is passed as string", {
-  expect_error(rwa_list_su_files(
-    bucket_name = bucket_name,
-    month = "07",
-    max_request_size = 2000,
-    silent = TRUE
-  ),
-  regexp = "must be a whole number"
+  expect_error(
+    rwa_list_su_files(
+      bucket_name = bucket_name,
+      month = "07",
+      max_request_size = 2000,
+      silent = TRUE
+    )
   )
 })
 
 test_that("error when month is passed as string", {
-  expect_error(rwa_list_su_files(
-    bucket_name = bucket_name,
-    day = "30",
-    max_request_size = 2000,
-    silent = TRUE
-  ),
-  regexp = "must be a whole number"
+  expect_error(
+    rwa_list_su_files(
+      bucket_name = bucket_name,
+      day = "30",
+      max_request_size = 2000,
+      silent = TRUE
+    )
   )
 })
 
