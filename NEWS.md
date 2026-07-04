@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# readwriteaws 0.0.0.9004 (2026-07-04)
+
+- Same as previous version.
+
+
 # readwriteaws 0.0.0.9003 (2026-06-18)
 
 * Add fledge-bump workflow
