@@ -1,4 +1,3 @@
-
 bucket_name <- "readwriteaws-test-poissonconsulting"
 
 test_that("get 6 image related files", {

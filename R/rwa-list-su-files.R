@@ -24,18 +24,20 @@
 #'                   extension = "xlsx", year = 2021)
 #' }
 #' @export
-rwa_list_su_files <- function(bucket_name,
-                              data_type = NULL,
-                              year = NULL,
-                              month = NULL,
-                              day = NULL,
-                              file_name = NULL,
-                              file_extension = NULL,
-                              max_request_size = 1000,
-                              silent = FALSE,
-                              aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
-                              aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
-                              region = Sys.getenv("AWS_REGION", "ca-central-1")) {
+rwa_list_su_files <- function(
+  bucket_name,
+  data_type = NULL,
+  year = NULL,
+  month = NULL,
+  day = NULL,
+  file_name = NULL,
+  file_extension = NULL,
+  max_request_size = 1000,
+  silent = FALSE,
+  aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
+  aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
+  region = Sys.getenv("AWS_REGION", "ca-central-1")
+) {
   chk::chk_null_or(data_type, vld = chk::vld_string)
   chk::chk_null_or(year, vld = chk::vld_whole_number)
   chk::chk_range(year, range = c(1900, 2100))
@@ -59,13 +61,9 @@ rwa_list_su_files <- function(bucket_name,
   month <- pad_dates(month)
 
   date <- paste(year, month, day, sep = "-")
-  regex_pattern <- paste(data_type,
-    date,
-    file_name,
-    file_extension,
-    sep = ".*"
-  )
-  file_list <- rwa_list_files(bucket_name,
+  regex_pattern <- paste(data_type, date, file_name, file_extension, sep = ".*")
+  file_list <- rwa_list_files(
+    bucket_name,
     pattern = regex_pattern,
     max_request_size = max_request_size,
     silent = silent,

@@ -1,4 +1,3 @@
-
 bucket_name <- "readwriteaws-test-poissonconsulting"
 
 test_that("functions works", {
@@ -186,9 +185,11 @@ test_that("Checking message that max size is same as outputed files", {
           bucket_name = bucket_name,
           max_request_size = 26
         ),
-        regexp = paste("'Max_request_size' matches retrieved files from AWS.",
-                       "Think about increasing 'Max_request_size' as there",
-                       "could be more files present")
+        regexp = paste(
+          "'Max_request_size' matches retrieved files from AWS.",
+          "Think about increasing 'Max_request_size' as there",
+          "could be more files present"
+        )
       ),
       regexp = "26 files were retrieved from AWS"
     ),
