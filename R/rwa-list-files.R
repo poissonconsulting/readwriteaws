@@ -56,13 +56,15 @@
 #' )
 #' }
 #' @export
-rwa_list_files <- function(bucket_name,
-                           max_request_size = 1000,
-                           pattern = ".*",
-                           silent = FALSE,
-                           aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
-                           aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
-                           region = Sys.getenv("AWS_REGION", "ca-central-1")) {
+rwa_list_files <- function(
+  bucket_name,
+  max_request_size = 1000,
+  pattern = ".*",
+  silent = FALSE,
+  aws_access_key_id = Sys.getenv("AWS_ACCESS_KEY_ID"),
+  aws_secret_access_key = Sys.getenv("AWS_SECRET_ACCESS_KEY"),
+  region = Sys.getenv("AWS_REGION", "ca-central-1")
+) {
   chk::chk_string(bucket_name)
   chk::chk_whole_number(max_request_size)
   chk::chk_gt(max_request_size, value = 0)
@@ -74,14 +76,17 @@ rwa_list_files <- function(bucket_name,
   input_max_request <- max_request_size
   start_after <- ""
   all_keys <- c()
-  s3 <- paws::s3(config = list(
-    credentials = list(creds = list(
-      access_key_id = aws_access_key_id,
-      secret_access_key = aws_secret_access_key
-    )),
-    region = region
-  ))
-
+  s3 <- paws::s3(
+    config = list(
+      credentials = list(
+        creds = list(
+          access_key_id = aws_access_key_id,
+          secret_access_key = aws_secret_access_key
+        )
+      ),
+      region = region
+    )
+  )
 
   while (max_request_size > 0) {
     key_list <- s3$list_objects_v2(
@@ -89,9 +94,13 @@ rwa_list_files <- function(bucket_name,
       MaxKeys = max_request_size,
       StartAfter = start_after
     )
-    key_names <- vapply(key_list$Contents, function(x) {
-      x$Key
-    }, "")
+    key_names <- vapply(
+      key_list$Contents,
+      function(x) {
+        x$Key
+      },
+      ""
+    )
     all_keys <- c(all_keys, key_names)
     start_after <- key_names[length(key_names)]
     max_request_size <- max_request_size - 1000
@@ -103,19 +112,24 @@ rwa_list_files <- function(bucket_name,
     usethis::ui_info(msg)
 
     if (input_max_request == no_all_keys) {
-      usethis::ui_warn(paste("{usethis::ui_path('Max_request_size')} matches",
-                              "retrieved files from AWS. Think about",
-                              "increasing",
-                              "{usethis::ui_path('Max_request_size')}",
-                              "as there could be more files present"))
+      usethis::ui_warn(paste(
+        "{usethis::ui_path('Max_request_size')} matches",
+        "retrieved files from AWS. Think about",
+        "increasing",
+        "{usethis::ui_path('Max_request_size')}",
+        "as there could be more files present"
+      ))
     }
   }
 
   filter_files <- grep(pattern, all_keys, value = TRUE)
 
   if (!silent) {
-    msg <- paste(length(filter_files), "files returned after",
-                 "{usethis::ui_path('pattern')} is applied")
+    msg <- paste(
+      length(filter_files),
+      "files returned after",
+      "{usethis::ui_path('pattern')} is applied"
+    )
     usethis::ui_info(msg)
   }
 

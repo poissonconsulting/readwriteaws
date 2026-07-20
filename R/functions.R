@@ -1,4 +1,3 @@
-
 number_of_files <- function(bucket_name) {
   chk::chk_string(bucket_name)
 
@@ -28,6 +27,8 @@ ask_to_overwrite <- function(directory, ask) {
     return(TRUE)
   }
 
-  usethis::ui_yeah(paste0("The folder is not empty. Files may be overwritten. ",
-                          "Proceed?"))
+  usethis::ui_yeah(paste0(
+    "The folder is not empty. Files may be overwritten. ",
+    "Proceed?"
+  ))
 }

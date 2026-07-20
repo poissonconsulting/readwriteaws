@@ -7,3 +7,5 @@
 ^README.Rmd$
 ^docs$
 ^\.github$
+^[.]?air[.]toml$
+^\.vscode$

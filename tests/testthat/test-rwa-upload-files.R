@@ -1,4 +1,3 @@
-
 bucket_name <- "readwriteaws-test-poissonconsulting"
 
 s3_bucket <- paws::s3()
