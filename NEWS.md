@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# readwriteaws 0.0.0.9006 (2026-07-20)
+
+- Same as previous version.
+
+
 # readwriteaws 0.0.0.9005 (2026-07-11)
 
 - Same as previous version.
