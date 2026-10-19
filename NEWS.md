@@ -1,4 +1,9 @@
-<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+<!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
+
+# readwriteaws 0.0.0.9007 (2026-10-19)
+
+- Standardize CI (tier: unimportant) - update fledge system (#30).
+
 
 # readwriteaws 0.0.0.9006 (2026-07-20)
 
